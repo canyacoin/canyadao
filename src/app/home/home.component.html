@@ -37,7 +37,28 @@
                   <p class="text-primary" style="font-size:2.25rem">1,000 CAN</p>
                   <p class="fw-300" style="font-size:1.25rem">Stake Required</p>
                   <p class="card-text"><small class="text-muted">Leave any time</small></p>
-                  <button class="btn btn-lg text-white my-1" style="background-image: linear-gradient(122deg, #33ccff, #4decca);border-radius: 64px">GET STARTED</button>
+
+                  <button type="button" class="btn btn-lg text-white my-1" style="background-image: linear-gradient(122deg, #33ccff, #4decca);border-radius: 64px" data-toggle="modal" data-target=".bd-example-modal-lg">GET STARTED</button>
+                  <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                      <div class="modal-content">
+                        <div style="padding-top:10px"></div>
+                        <strong class="text-center fw-300" style="font-size:1.25rem">CONFIRMATION</strong>
+                        <div style="padding-top:10px"></div>
+                        <p class="text-center">You are joining the CanYa DAO as Member</p>
+                        <p class="text-primary" style="font-size:2.25rem">1,000 CAN</p>
+                        <p class="fw-300" style="font-size:1.25rem">Stake Required</p>
+                        <div style="padding-top:10px"></div>
+                        <strong class="text-left" style="padding-left:200px">- Stake is locked from your wallet</strong>
+                        <strong class="text-left" style="padding-left:200px">- You can unlock your stake at any time</strong>
+                        <strong class="text-left" style="padding-left:200px">- Tasks and rewards are coming soon</strong>
+                        <div style="padding-top:10px"></div>
+                          <p class="text-center"><a class="btn btn-primary btn-success" href="/">Return home</a></p>
+                        <div style="padding-top:10px"></div>
+                      </div>
+                    </div>
+                  </div>
+
                 </div>
               </div>
             </div>
@@ -53,8 +74,9 @@
                   <p class="text-primary" style="font-size:2.25rem">10,000 CAN</p>
                   <p class="fw-300" style="font-size:1.25rem">Stake Required</p>
                   <p class="card-text"><small class="text-muted">Minimum of 30 days since joining</small></p>
-                  <button class="btn btn-lg text-white my-1" style="background-image: linear-gradient(122deg, #33ccff, #4decca);border-radius: 64px">GET STARTED</button>
-                  </div>
+                  <!-- <app-modal [content]=="parentProperty"></app-modal> -->
+                  <button type="button" class="btn btn-lg text-white my-1" style="background-image: linear-gradient(122deg, #33ccff, #4decca);border-radius: 64px" (click)="openModal(content)">GET STARTED</button>
+                </div>
               </div>
             </div>
             <div class="col-12 col-lg-4 hidden-md-down">
@@ -71,7 +93,26 @@
                   <p class="text-primary" style="font-size:2.25rem">100,000 CAN</p>
                   <p class="fw-300" style="font-size:1.25rem">Stake Required</p>
                   <p class="card-text"><small class="text-muted">Minimum of 180 days since joining</small></p>
-                  <button class="btn btn-lg text-white my-1" style="background-image: linear-gradient(122deg, #33ccff, #4decca);border-radius: 64px">GET STARTED</button>
+                  <button type="button" class="btn btn-lg text-white my-1" style="background-image: linear-gradient(122deg, #33ccff, #4decca);border-radius: 64px" data-toggle="modal" data-target=".bd-example-modal-lg">GET STARTED</button>
+                  <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                      <div class="modal-content">
+                        <div style="padding-top:10px"></div>
+                        <strong class="text-center fw-300" style="font-size:1.25rem">CONFIRMATION</strong>
+                        <div style="padding-top:10px"></div>
+                        <p class="text-center">You are joining the CanYa DAO as CORE</p>
+                        <p class="text-primary" style="font-size:2.25rem">100,000 CAN</p>
+                        <p class="fw-300" style="font-size:1.25rem">Stake Required</p>
+                        <div style="padding-top:10px"></div>
+                        <strong class="text-left" style="padding-left:200px">- Stake is locked from your wallet</strong>
+                        <strong class="text-left" style="padding-left:200px">- You can unlock your stake at any time</strong>
+                        <strong class="text-left" style="padding-left:200px">- Tasks and rewards are coming soon</strong>
+                        <div style="padding-top:10px"></div>
+                          <p class="text-center"><a class="btn btn-primary btn-success" href="/">Return home</a></p>
+                        <div style="padding-top:10px"></div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>

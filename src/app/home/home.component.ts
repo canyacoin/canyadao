@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit} from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -9,11 +9,11 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 export class HomeComponent implements OnInit, AfterViewInit {
 
-
   // Flags
   loading = true;
 
-  constructor(private router: Router,private activatedRoute:  ActivatedRoute) {}
+  constructor(private router: Router, private activatedRoute:  ActivatedRoute) {}
+
 
   ngOnInit() {
         setTimeout( () => {

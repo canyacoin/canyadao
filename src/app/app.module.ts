@@ -20,6 +20,7 @@ import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './pagenotfound/pagenotfound.component';
 import { ProfileComponent } from './profile/profile.component';
+import { ModalComponent } from './modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { ProfileComponent } from './profile/profile.component';
     HomeComponent,
     PageNotFoundComponent,
     ProfileComponent,
+    ModalComponent,
   ],
   imports: [
     BrowserModule,
