@@ -1,16 +1,16 @@
 .search-container {
-	position:relative; 
-	padding:0; 
+	position:relative;
+	padding:0;
     margin:0;
 }
 .search {
 	padding: 9px;
 	font-size: 14px;
-	margin: 0; 
+	margin: 0;
     padding-left: 10px;
     padding-right: 20px;
     height: 36px;
-    border: 1px solid #DCE0E6; 
+    border: 1px solid #DCE0E6;
     border-radius: 5px;
 }
 .search:focus {
@@ -27,9 +27,13 @@ input {
     background-position: right 10px center;
 }
 
+.btn-space {
+    margin-right: 5px;
+}
+
 .icon-bot {
     margin-top: -5px;
-    border: none; 
+    border: none;
     opacity: 0.6;
     width: 24px;
     height: 24px;
@@ -41,11 +45,11 @@ input {
 
 .icon-bot:hover {
     background: url('/assets/img/bot-hover.svg');
-    opacity: 1.0; 
+    opacity: 1.0;
 }
 
 .icon-sign-out {
-    border: none; 
+    border: none;
     opacity: 0.6;
     width: 24px;
     height: 24px;
@@ -57,5 +61,5 @@ input {
 
 .icon-sign-out:hover {
     background: url('/assets/img/signout-hover.svg');
-    opacity: 1.0; 
+    opacity: 1.0;
 }

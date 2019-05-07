@@ -1,18 +1,6 @@
 <app-top></app-top>
 <div style="padding-top:80px"></div>
 
-<!-- Container for sidebar(s) + page content -->
-<ng-sidebar-container>
-
-  <!-- A sidebar -->
-  <ng-sidebar [(opened)]="_opened">
-    <p>Sidebar contents</p>
-  </ng-sidebar>
-
-  <!-- Page content -->
-  <div ng-sidebar-content>
-    <router-outlet></router-outlet>
-  </div>
-</ng-sidebar-container>
+<router-outlet></router-outlet>
 
 <app-footer></app-footer>

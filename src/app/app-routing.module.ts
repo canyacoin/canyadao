@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './auth.guard';
 
 import { HomeComponent } from './home/home.component';
+import { ProfileComponent } from './profile/profile.component';
 import { PageNotFoundComponent } from './pagenotfound/pagenotfound.component';
 
 const routes: Routes = [
@@ -23,9 +24,14 @@ const routes: Routes = [
       // canActivate: [AuthGuard]
   },
   {
+      path: 'profile',
+      component: ProfileComponent,
+      // canActivate: [AuthGuard]
+  },
+  {
       path: '**',
       component: PageNotFoundComponent
-  } 
+  }
 ];
 
 @NgModule({
