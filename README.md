@@ -1,14 +1,29 @@
-# Canyadao
+# CanYaDAO
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.8.
+**Requirements**
+
+[Angular CLI](https://github.com/angular/angular-cli) version 7.3.8.
+
+`npm install -g @angular/cli`
+
+[YARN Package Manager](https://yarnpkg.com/en/docs/install#mac-stable)
+```
+brew install yarn
+yarn
+yarn link
+```
 
 ## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+From the project folder:
+```
+ng serve --open
+```
 
 ## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Run `ng generate component component-name` to generate a new component.
+
+You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
 ## Build
 
