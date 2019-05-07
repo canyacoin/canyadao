@@ -104,6 +104,11 @@
   border-radius: 5px;
 }
 
+.bg-white {
+  background: #FFFFFF;
+  border-radius: 5px;
+}
+
 .bg-gold {
     background: -webkit-linear-gradient(110deg, #fdcd3b 60%, #ffed4b 60%);
     background: -o-linear-gradient(110deg, #fdcd3b 60%, #ffed4b 60%);
