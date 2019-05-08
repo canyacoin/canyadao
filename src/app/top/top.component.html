@@ -1,7 +1,6 @@
 <!-- Topbar -->
 <nav class="topbar topbar-expand-md topbar-sticky" id="section-top">
   <div class="container">
-
     <div class="topbar-left">
       <a class="topbar-brand" [routerLink]="['home']">
         <!-- <img class="logo-inverse" src="assets/img/logo.svg" width="136px" alt="logo"> -->
@@ -29,8 +28,8 @@
         <a class="top-btn"  href="#" target="_blank">
         <button _ngcontent-c1="" class="btn btn-primary btn-outline btn-sm btn-space" id="github-btn" type="submit">CREATE WALLET</button>
         </a>
-        <a class="top-btn" href="#" target="_blank">
-                            <button class="btn btn-primary btn-sm  btn-top" id="io-btn">CONNECT WALLET</button>
+        <a  class="top-btn" id="wallet-link" [routerLink]="['wallet']">
+          <button class="btn btn-primary btn-sm  btn-top" id="wallet-btn">CONNECT WALLET</button>
         </a>
       <button class="topbar-toggler text-gray">&#9776;</button>
     </div>
