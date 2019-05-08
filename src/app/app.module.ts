@@ -5,7 +5,6 @@ import { HttpModule } from '@angular/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { DatePipe } from '@angular/common';
-import { SidebarModule } from 'ng-sidebar';
 
 import * as $ from 'jquery';
 
@@ -40,7 +39,6 @@ import { ModalComponent } from './modal/modal.component';
     ReactiveFormsModule,
     FormsModule,
     AppRoutingModule,
-    SidebarModule.forRoot(),
   ],
   providers: [AuthGuard, DatePipe],
   bootstrap: [AppComponent]
