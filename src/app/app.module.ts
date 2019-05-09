@@ -14,7 +14,6 @@ import { AuthGuard } from './auth.guard';
 import { environment } from '../environments/environment';
 
 import { TopComponent } from './top/top.component';
-import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './pagenotfound/pagenotfound.component';
@@ -26,7 +25,6 @@ import { WalletComponent } from './wallet/wallet.component';
   declarations: [
     AppComponent,
     TopComponent,
-    HeaderComponent,
     FooterComponent,
     HomeComponent,
     PageNotFoundComponent,

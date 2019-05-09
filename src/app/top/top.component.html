@@ -14,24 +14,25 @@
         <li class="nav-item"><a class="nav-link" class="nav-link" id="profile-link" [routerLink]="['profile']">PROFILE</a></li>
 
         <li class="nav-item mobile-only">
-                <a class="nav-link" href="#" target="_blank">
-                <button _ngcontent-c1="" class="btn btn- btn-primary btn-outline btn-sm" id="github-btn" type="submit">CREATE WALLET</button>
-                </a>
+          <a class="nav-link"  href="https://www.binance.org/en/create" target="_blank">
+          <button _ngcontent-c1="" class="btn btn-primary btn-outline btn-sm btn-space" id="btn-create" type="submit">CREATE WALLET</button>
+          </a>
         </li>
           <li class="nav-item mobile-only">
-                <a class="nav-link" href="#" target="_blank">
-                <button class="btn btn-primary btn-sm" id="io-btn">CREATE WALLET</button>
-                </a>
+            <a  class="nav-link" id="wallet-link" [routerLink]="['wallet']">
+              <button class="btn btn-primary btn-sm  btn-top" id="wallet-btn">CONNECT WALLET</button>
+            </a>
         </li>
       </ul>
 
-        <a class="top-btn"  href="#" target="_blank">
-        <button _ngcontent-c1="" class="btn btn-primary btn-outline btn-sm btn-space" id="github-btn" type="submit">CREATE WALLET</button>
+        <a class="top-btn" style="padding-right:10px" href="https://www.binance.org/en/create" target="_blank">
+        <button _ngcontent-c1="" class="btn btn-primary btn-outline btn-sm btn-space" id="btn-create" type="submit">CREATE WALLET</button>
         </a>
         <a  class="top-btn" id="wallet-link" [routerLink]="['wallet']">
           <button class="btn btn-primary btn-sm  btn-top" id="wallet-btn">CONNECT WALLET</button>
         </a>
-      <button class="topbar-toggler text-gray">&#9776;</button>
+
+      <button class="topbar-toggler text-gray" style="padding-left:20px">&#9776;</button>
     </div>
   </div>
 </nav>
