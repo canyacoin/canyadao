@@ -12,7 +12,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class HomeComponent implements OnInit, AfterViewInit {
 
   canAmount = 20000000;
-  // canPrice = 0.02;
+  canPrice = 0.02;
   canAddress = '0x1d462414fe14cf489c7A21CaC78509f4bF8CD7c0';
   daoAddress = '0x685678927216DF235A4A5A952EfE88ed55e62Ff2';
   apiKey = 'J5NSX2YJY1U6U5T8WBFDKKQWWYEPI2P735';
@@ -64,8 +64,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
   getCANPrice() {
     const cmcApi = 'https://api.coinmarketcap.com/v1/ticker/canyacoin/';
     const result = (this.getJSON(cmcApi));
-    const result = result[0].price_usd;
-    return result;
+    const result2 = result[0].price_usd;
+    return result2;
   }
 
   getCANAmountLive() {
@@ -77,7 +77,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
     const etherscanApi = 'https://api.etherscan.io/api?module=account&action=tokenbalance&contractaddress='; // the API link.
     const etherscanApiToken = etherscanApi + tokenAddress; // change this value if you want to use other token.
     const tokensAtAddress = etherscanApiToken + '&address=' + targetAddress + '&tag=latest';
-    const tokensAPIKey = tokensAtAddress + '&apikey=' + this.apikey;
+    const tokensAPIKey = tokensAtAddress + '&apikey=' + this.apiKey;
     const result = Math.floor(this.getJSON(tokensAtAddress).result / (Math.pow(10, precision)));
     return result;
   }
