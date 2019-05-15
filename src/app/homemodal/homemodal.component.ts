@@ -1,6 +1,9 @@
 import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import { Router, ActivatedRoute } from '@angular/router';
 
+import { WalletService } from '../wallet.service';
+import { HomeComponent } from '../home/home.component';
 import { DATADAO } from '../dataDAO';
 
 
@@ -16,7 +19,7 @@ export class HomemodalComponent implements OnInit {
 
   closeResult: string;
 
-  constructor(private modalService: NgbModal) {}
+  constructor(private modalService: NgbModal, private homeComponent: HomeComponent, private walletService: WalletService) {}
 
   ngOnInit() {
   }
@@ -29,6 +32,22 @@ export class HomemodalComponent implements OnInit {
     });
   }
 
+  getWallet(): string{
+    return this.walletService.getWallet();
+  }
+
+  getWalletBool(): boolean{
+    return this.walletService.walletBool;
+  }
+
+  getWalletNone(): boolean{
+    return this.walletService.walletNone;
+  }
+
+  checkWallet(){
+    this.homeComponent.checkWallet();
+  }
+
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
       return 'by pressing ESC';
@@ -37,6 +56,10 @@ export class HomemodalComponent implements OnInit {
     } else {
       return  `with: ${reason}`;
     }
+  }
+
+  public navigateWallet(){
+    this.homeComponent.navigateWallet();
   }
 
   getStake(id): number {

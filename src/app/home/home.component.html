@@ -1,6 +1,6 @@
 <!-- Main container -->
 <main class="main-content">
-
+<ngb-alert *ngIf="successMessage" type="warning" style="text-right" (close)="successMessage = null">{{ successMessage }}</ngb-alert>
   <section class="section bg-lgrey my-30 py-30 px-30"  id="cards">
 
     <div class="bg-white">

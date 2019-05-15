@@ -5,12 +5,16 @@ import { DATADAO } from '../dataDAO';
 
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
+import {Subject} from 'rxjs';
+import {debounceTime} from 'rxjs/operators';
+
+import { WalletService } from '../wallet.service';
 
 
 @Component({
-    selector: 'app-home',
-    templateUrl: './home.component.html',
-    styleUrls: ['./home.component.css']
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.css']
 })
 
 export class HomeComponent implements OnInit, AfterViewInit {
@@ -29,28 +33,59 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   closeResult: string;
 
+  //No Wallet Alert
+  private _success = new Subject<string>();
+  staticAlertClosed = false;
+  successMessage: string;
+
   constructor(private router: Router,
     private activatedRoute:  ActivatedRoute,
-  private modalService: NgbModal) {}
+    private modalService: NgbModal,
+    private walletService: WalletService) {}
 
 
-  ngOnInit() {
-        setTimeout( () => {
-            this.loading = false;
-            }, 2000
-        );
-        $('#top-nav .nav-item a').css('color','#919d9d');
+    ngOnInit() {
+      setTimeout( () => {
+        this.loading = false;
+        this.checkWallet();
+      }, 2000
+    );
+    $('#top-nav .nav-item a').css('color','#919d9d');
 
-        this.canPrice = this.getCANPrice();
-        this.canAmount = this.getCANAmountLive();
-        this.perks0 = this.getPerks(0);
-        this.perks1 = this.getPerks(1);
-        this.perks2 = this.getPerks(2);
-        this.perks3 = this.getPerks(3);
+    setTimeout( () => {
+      this.checkWallet();
+    }, 5000
+  );
+
+    this.canPrice = this.getCANPrice();
+    this.canAmount = this.getCANAmountLive();
+    this.perks0 = this.getPerks(0);
+    this.perks1 = this.getPerks(1);
+    this.perks2 = this.getPerks(2);
+    this.perks3 = this.getPerks(3);
+
+    // Alert Timer
+    setTimeout(() => this.staticAlertClosed = true, 10000);
+    this._success.subscribe((message) => this.successMessage = message);
+    this._success.pipe(
+      debounceTime(5000)
+    ).subscribe(() => this.successMessage = null);
 
   }
   ngAfterViewInit(){
 
+  }
+
+  getWallet(): string{
+    return this.walletService.getWallet();
+  }
+
+  getWalletBool(): boolean{
+    return this.walletService.walletBool;
+  }
+
+  getWalletNone(): boolean{
+    return this.walletService.walletNone;
   }
 
   getStake(id): number {
@@ -91,6 +126,17 @@ export class HomeComponent implements OnInit, AfterViewInit {
     }
   }
 
+  public navigateWallet(){
+    this.router.navigate(['/wallet'])
+  }
+
+
+  public checkWallet() {
+    if (this.walletService.walletNone) {
+      this._success.next(`Please Connect Your Wallet`);
+    }
+
+}
 
   /** JSON Parser */
   getJSON(url) {
@@ -113,7 +159,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   convertToLocaleString(variable) {
     const withCommas = parseFloat(variable).toFixed(2);
     return withCommas.replace(/\d(?=(\d{3})+\.)/g, '$&,');
-   }
+  }
 
   getCANPrice() {
     const cmcApi = 'https://api.coinmarketcap.com/v1/ticker/canyacoin/';

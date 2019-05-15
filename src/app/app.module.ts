@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpModule } from '@angular/http';
+import { HttpClientModule }    from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { DatePipe } from '@angular/common';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -41,6 +42,7 @@ import { WalletSwitchComponent } from './walletswitch/walletswitch.component';
     BrowserModule,
     BrowserAnimationsModule,
     HttpModule,
+    HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
     AppRoutingModule,

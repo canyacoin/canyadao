@@ -1,17 +1,22 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { FileUploadService } from '../file-upload.service'
+import { WalletService } from '../wallet.service'
 
 @Component({
   selector: 'app-wlt-connect',
   styleUrls: ['../wallet/wallet.component.css'],
   template: `<p class="fw-300" style="font-size:1.5rem">Wallet Connect (Recommended)</p>
               <p>Scan a QR code from your mobile wallet using WalletConnect.</p>
-              <p>Recommended Wallets: <strong>Trust Wallet</strong><span>, </span><strong>CoolWallet S</strong></p>
+              <p>Recommended Browsers:
+                <a href="https://trustwallet.com" target="_blank"><strong>Trust Wallet</strong></a>
+                <span>, </span>
+                <a href="https://coolwallet.io" target="_blank"><strong>CoolWallet S</strong></a>
+              </p>
+
               <hr>
-              <div class="px-30">
+              <div class="px-30 text-center">
                 <div>
-                  <a class="hvr-grow">
-                    <strong class="fw-300">Show QR Code</strong>
-                  </a>
+                  <button class="btn btn-primary btn-w-xl" (click)="setWallet()">Show QR Code</button>
                 </div>
               </div>
               <hr>
@@ -20,6 +25,12 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class ConnectWLTComponent {
   @Input() id;
+
+constructor(private walletService: WalletService){
+}
+setWallet(){
+  this.walletService.setWallet('bnbtestwallet');
+}
 }
 
 @Component({
@@ -34,30 +45,37 @@ export class ConnectWLTComponent {
   <hr>
 
   <div class="row bg-white">
-    <div class="col-sm-1 bg-white"></div>
-    <div class="col-sm-2 bg-lgrey py-30">
-      <button class="btn btn-round fw-400" style="width:35px; height: 35px; padding:0;letter-spacing: 0px;text-transform:none; color:#33ccff; border-color:#33ccff;font-size:18px;background-color: transparent">1</button>
+  <div class="col mx-30 py-30 bg-lgrey">
+  <div class="row">
+    <div class="col-2">
+      <p class="btn btn-round fw-400" style="width:35px; height: 35px; padding:0;letter-spacing: 0px;text-transform:none; color:#33ccff; border-color:#33ccff;font-size:18px;background-color: transparent">1</p>
     </div>
-    <div class="col-sm-8 bg-lgrey  py-30">
-      <strong class="fw-300">Connect Ledger and insert PIN</strong>
+    <div class="col">
+      <strong style="font-size:20 text-align:left">Connect Ledger and insert PIN</strong>
     </div>
-    <div class="col-sm-1 bg-white"></div>
   </div>
+  </div>
+  </div>
+
+
   <div style="padding-top:10px"></div>
+
   <div class="row bg-white">
-    <div class="col-sm-1 bg-white"></div>
-    <div class="col-sm-2 bg-lgrey py-30">
+  <div class="col mx-30 py-30 bg-lgrey">
+  <div class="row">
+    <div class="col-2">
       <p class="btn btn-round fw-400" style="width:35px; height: 35px; padding:0;letter-spacing: 0px;text-transform:none; color:#33ccff; border-color:#33ccff;font-size:18px;background-color: transparent">2</p>
     </div>
-    <div class="col-sm-8 bg-lgrey  py-30">
-      <strong class="fw-300">Open BinanceChain App</strong>
+    <div class="col">
+      <strong style="font-size:20 text-align:left">Open BinanceChain App</strong>
     </div>
-    <div class="col-sm-1 bg-white"></div>
+  </div>
+  </div>
   </div>
   <hr>
 
   <div class="row">
-    <div class="col-sm-8">
+    <div class="col">
       <div class="row">
         <a href="https://www.binance.org/static/guides/DEX-Ledger-Documentation.html" target="_blank">App Installation Instructions</a>
       </div>
@@ -65,10 +83,10 @@ export class ConnectWLTComponent {
         <a href="https://support.ledger.com/hc/en-us/articles/115005165269-Connection-issues-with-Windows-or-Linux" target="_blank">Connection issues</a>
       </div>
     </div>
-    <div class="col-sm-4">
+    <div class="col mt-10">
       <div class="row text-right">
         <div class="col">
-          <a class="btn btn-primary btn-w-xl" style="margin-right:40px" href="/">UNLOCK LEDGER</a>
+          <button class="btn btn-primary btn-w-xl" style="margin-right:40px" (click)="setWallet()">UNLOCK LEDGER</button>
         </div>
       </div>
     </div>
@@ -76,15 +94,24 @@ export class ConnectWLTComponent {
 })
 export class LedgerWLTComponent {
   @Input() id;
+
+  constructor(private walletService: WalletService){
+  }
+  setWallet(){
+    this.walletService.setWallet('bnbtestwallet');
+  }
 }
 
 @Component({
   selector: 'app-wlt-keystore',
   template: `<p class="fw-300" style="font-size:1.5rem">Select Keystore File</p>
-  <hr>
-<div class="row justify-content-center">
-    <a class="btn btn-primary btn-outline btn-w-md" style="width:200px" href="/">UPLOAD FILE</a>
-  </div>
+  <div class="form-group text-center">
+    <label class="" style="width:200px" for="file"></label>
+    <input type="file"
+           id="file"
+           (change)="handleFileInput($event.target.files)">
+</div>
+
   <form class="" action="index.html" method="post">
     <div class="form-group">
       <label for="InputKey1" style="font-size:1rem">Or paste here:</label>
@@ -101,18 +128,39 @@ export class LedgerWLTComponent {
   <div style="padding-top:10px"></div>
   <div class="row text-right">
     <div class="col">
-      <a class="btn btn-primary btn-w-md" style="margin-right:40px" href="/">UNLOCK</a>
+      <button class="btn btn-primary btn-w-md" style="margin-right:40px" (click)="setWallet()">UNLOCK</button>
     </div>
   </div>`
 })
 export class KeystoreWLTComponent {
   @Input() id;
+
+  constructor(private fileUploadService: FileUploadService, private walletService: WalletService){
+
+  }
+
+  fileToUpload: File = null;
+
+  setWallet(){
+    this.walletService.setWallet('bnbtestwallet');
+  }
+
+  handleFileInput(files: FileList) {
+    this.fileToUpload = files.item(0);
+}
+
+uploadFileToActivity() {
+    this.fileUploadService.postFile(this.fileToUpload).subscribe(data => {
+      // do something, if upload success
+      }, error => {
+        console.log(error);
+      });
+  }
 }
 
 @Component({
   selector: 'app-wlt-phrase',
   template: `              <p class="fw-300" style="font-size:1.5rem">Enter 24-word Phrase</p>
-                <hr>
                 <form class="" action="index.html" method="post">
                   <div class="form-group">
                     <label for="InputKey1" style="font-size:1rem">Enter words here:</label>
@@ -130,12 +178,19 @@ export class KeystoreWLTComponent {
                 <div style="padding-top:10px"></div>
                 <div class="row text-right">
                   <div class="col">
-                    <a class="btn btn-primary btn-w-md" style="margin-right:40px" href="/">UNLOCK</a>
+                    <button class="btn btn-primary btn-w-md" style="margin-right:40px" (click)="setWallet()">UNLOCK</button>
                   </div>
                 </div>`
 })
 export class PhraseWLTComponent {
   @Input() id;
+
+  constructor(private walletService: WalletService){
+  }
+  setWallet(){
+    this.walletService.setWallet('bnbtestwallet');
+  }
+
 }
 
 export const WalletSwitchComponent =
