@@ -9,16 +9,18 @@
 
     <div class="modal-body">
       <div style="padding-top:10px"></div>
-      <p class="text-center">You are joining the CanYa DAO as {{getName(id) | uppercase }}</p>
+
+      <p class="text-center"><span>You are joining the CanYa DAO as </span>
+        <span><strong>{{getName(id) | uppercase }}</strong></span></p>
+
       <p class="text-primary" style="font-size:2.25rem">{{ getStake(id) | number:0}} CAN</p>
-      <p class="fw-300" style="font-size:1.25rem">Stake Required</p>
+      <p class="fw-300" style="font-size:1.25rem">Stake required with a waiting period of {{ getPeriod(id)}} days</p>
       <div style="padding-top:10px"></div>
-      <strong class="text-center">- Stake is locked from your wallet</strong>
+      <strong class="text-center">Stake is locked from your wallet immediately, but you can unlock your stake at any time.</strong>
+      <br><br>
+      <p class="text-center">Note: If you join a higher tier, you automatically qualify for any lower tiers once you pass their waiting periods.</p>
       <br>
-      <strong class="text-center">- You can unlock your stake at any time</strong>
-      <br>
-      <strong class="text-center">- Tasks and rewards are coming soon</strong>
-      <br>
+      <p class="text-center text-muted">Tasks and rewards are coming soon</p>
     </div>
 
     <div class="modal-footer text-center">

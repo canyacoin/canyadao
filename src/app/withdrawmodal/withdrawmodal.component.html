@@ -1,0 +1,67 @@
+<ng-template #content let-modal>
+
+  <div class="container text-center">
+
+    <div class="modal-header">
+      <h2 class="text-center">CONFIRMATION</h2>
+      <hr>
+    </div>
+
+    <div class="modal-body">
+      <div style="padding-top:10px"></div>
+      <div style="padding-top:10px"></div>
+      <strong class="text-center">You can downgrade your tier, or withdraw all your stake.</strong>
+      <p class="text-center">If you remove all your stake you will not be able to access the DAO until you re-lock. All waiting periods will be reset.</p>
+
+      <hr>
+      <div class="row text-center">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-4 text-center">
+          <div class="row text-center">
+            <p>{{getName(0)}}: {{getStake(0)}} CAN</p>
+          </div>
+        </div>
+        <div class="col-sm-7 text-center">
+          <button type="button" class="btn btn-outline btn-success text-center" (click)="modal.close('Save click')">DOWNGRADE</button>
+        </div>
+      </div>
+      <hr>
+      <div class="row text-center">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-4 text-center">
+          <div class="row text-center">
+            <p>{{getName(1)}}: {{getStake(1)}} CAN</p>
+          </div>
+        </div>
+        <div class="col-sm-7 text-center">
+          <button type="button" class="btn btn-outline btn-success text-center" (click)="modal.close('Save click')">DOWNGRADE</button>
+        </div>
+      </div>
+      <hr>
+      <div class="row text-center">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-4 text-center">
+          <div class="row text-center">
+            <p>{{getName(2)}}: {{getStake(2)}} CAN</p>
+          </div>
+        </div>
+        <div class="col-sm-7 text-center">
+          <button type="button" class="btn btn-outline btn-success text-center" (click)="modal.close('Save click')">DOWNGRADE</button>
+        </div>
+      </div>
+      <hr>
+      <div class="row text-center">
+        <div class="col-sm-5"></div>
+        <div class="col-sm-7">
+          <button type="button" class="btn btn-outline btn-danger text-center" (click)="modal.close('Save click')">WITHDRAW ALL</button>
+      </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</ng-template>
+
+<button class="btn btn-primary btn-w-xl btn-danger"
+(click)="open(content)">WITHDRAW STAKE</button>

@@ -5,20 +5,35 @@ import { DATADAO } from '../dataDAO';
 
 
 @Component({
-  selector: 'app-homemodal',
-  templateUrl: './homemodal.component.html',
-  encapsulation: ViewEncapsulation.None,
-  styleUrls: ['./homemodal.component.css']
+  selector: 'app-withdrawmodal',
+  templateUrl: './withdrawmodal.component.html',
+    encapsulation: ViewEncapsulation.None,
+  styleUrls: ['./withdrawmodal.component.css']
 })
-export class HomemodalComponent implements OnInit {
-  @Input() id: number;
-  dataDAO = DATADAO;
+export class WithdrawmodalComponent implements OnInit {
 
-  closeResult: string;
+    @Input() id: number;
+      dataDAO = DATADAO;
+      closeResult: string;
 
-  constructor(private modalService: NgbModal) {}
+  constructor(private modalService: NgbModal) { }
 
   ngOnInit() {
+  }
+
+  getStake(id): number {
+    const tier = this.dataDAO.find(tier => tier.id === id);
+    return tier.stake;
+  }
+
+  getName(id): string {
+    const tier = this.dataDAO.find(tier => tier.id === id);
+    return tier.name;
+  }
+
+  getPeriod(id): number {
+    const tier = this.dataDAO.find(tier => tier.id === id);
+    return tier.period;
   }
 
   open(content) {
@@ -38,22 +53,5 @@ export class HomemodalComponent implements OnInit {
       return  `with: ${reason}`;
     }
   }
-
-  getStake(id): number {
-    const tier = this.dataDAO.find(tier => tier.id === id);
-    return tier.stake;
-  }
-
-  getName(id): string {
-    const tier = this.dataDAO.find(tier => tier.id === id);
-    return tier.name;
-  }
-
-  getPeriod(id): number {
-    const tier = this.dataDAO.find(tier => tier.id === id);
-    return tier.period;
-  }
-
-
 
 }

@@ -20,6 +20,8 @@ import { ProfileComponent } from './profile/profile.component';
 import { ModalComponent } from './modal/modal.component';
 import { WalletComponent } from './wallet/wallet.component';
 import { HomemodalComponent } from './homemodal/homemodal.component';
+import { WithdrawmodalComponent } from './withdrawmodal/withdrawmodal.component';
+import { WalletSwitchComponent } from './walletswitch/walletswitch.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +34,8 @@ import { HomemodalComponent } from './homemodal/homemodal.component';
     ModalComponent,
     WalletComponent,
     HomemodalComponent,
+    WithdrawmodalComponent,
+    WalletSwitchComponent,
   ],
   imports: [
     BrowserModule,

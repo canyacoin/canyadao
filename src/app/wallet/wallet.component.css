@@ -167,3 +167,28 @@ input {
 .hvr-underline-reveal:hover:before, .hvr-underline-reveal:focus:before, .hvr-underline-reveal:active:before {
   right: 0;
 }
+
+
+/* Grow */
+.hvr-grow {
+    display: inline-block;
+    vertical-align: middle;
+		width: 600px;
+		height: 100px;
+		text-align: center;
+		font-size: 22px;
+		vertical-align: middle;
+		background-color: #F8F9FA;
+    transform: translateZ(0);
+  box-shadow: 0px 0px 5px 0px rgba(218,227,232,1);
+    backface-visibility: hidden;
+    -moz-osx-font-smoothing: grayscale;
+    transition-duration: 0.3s;
+    transition-property: transform;
+}
+
+.hvr-grow:hover,
+.hvr-grow:focus,
+.hvr-grow:active {
+    transform: scale(1.01);
+}
