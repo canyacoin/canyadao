@@ -1,5 +1,9 @@
 import { Component, OnInit, AfterViewInit} from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Tier } from '../dataTier';
+import { DATADAO } from '../dataDAO';
+
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -11,6 +15,9 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 export class HomeComponent implements OnInit, AfterViewInit {
 
+  dataDAO = DATADAO;
+  perks0 = []; perks1 = []; perks2 = [];  perks3 = [];
+
   canAmount = 20000000;
   canPrice = 0.02;
   canAddress = '0x1d462414fe14cf489c7A21CaC78509f4bF8CD7c0';
@@ -20,7 +27,11 @@ export class HomeComponent implements OnInit, AfterViewInit {
   // Flags
   loading = true;
 
-  constructor(private router: Router, private activatedRoute:  ActivatedRoute) {}
+  closeResult: string;
+
+  constructor(private router: Router,
+    private activatedRoute:  ActivatedRoute,
+  private modalService: NgbModal) {}
 
 
   ngOnInit() {
@@ -32,11 +43,54 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
         this.canPrice = this.getCANPrice();
         this.canAmount = this.getCANAmountLive();
+        this.perks0 = this.getPerks(0);
+        this.perks1 = this.getPerks(1);
+        this.perks2 = this.getPerks(2);
+        this.perks3 = this.getPerks(3);
 
   }
   ngAfterViewInit(){
 
   }
+
+  getStake(id): number {
+    const tier = this.dataDAO.find(tier => tier.id === id);
+    return tier.stake;
+  }
+
+  getName(id): string {
+    const tier = this.dataDAO.find(tier => tier.id === id);
+    return tier.name;
+  }
+
+  getPeriod(id): number {
+    const tier = this.dataDAO.find(tier => tier.id === id);
+    return tier.period;
+  }
+
+  getPerks(id): string[] {
+    const tier = this.dataDAO.find(tier => tier.id === id);
+    return tier.perks;
+  }
+
+  open(content) {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return  `with: ${reason}`;
+    }
+  }
+
 
   /** JSON Parser */
   getJSON(url) {

@@ -1,158 +1,113 @@
 <!-- Main container -->
 <main class="main-content">
 
-  <section class="section bg-lgrey my-30 py-0"  id="cards">
-        <section class="section bg-lgrey py-30 px-30">
-          <div class="bg-white">
-            <img src="assets/img/media/canyadao.svg" width="auto" alt="logo">
-                  <div style="padding-top:20px"></div>
-            <h2 class="text-center">CanYaDAO</h2>
-            <p class="text-center">A GLOBAL ORGANISATION FOR THE CANYA ECOSYSTEM</p>
-            <p class="text-center">Join the CanYa DAO today to help govern and fund the thriving CanYa ecosystem.</p>
-            <p class="text-center">DAO Members complete tasks for autonomous payments, enjoy perks and keep the CanYa DAO Fund prosperous.</p>
-            <p class="text-primary text-center" style="font-size:2.25rem">$USD {{ convertToLocaleString(getCANUSD()) }}</p>
-            <p class="fw-300 text-center" style="font-size:1.25rem">Current Size of Fund</p>
-                  <div style="padding-top:20px"></div>
-          </div>
+  <section class="section bg-lgrey my-30 py-30 px-30"  id="cards">
 
-            <div class="container">
-                  <div class="row">
-                      <div class="col-md-1"></div>
-                  <div class="col-md-10">
+    <div class="bg-white">
+      <img src="assets/img/media/canyadao.svg" width="auto" alt="logo">
+      <div style="padding-top:20px"></div>
+      <h2 class="text-center">CanYaDAO</h2>
+      <p class="text-center">A GLOBAL ORGANISATION FOR THE CANYA ECOSYSTEM</p>
+      <p class="text-center">Join the CanYa DAO today to help govern and fund the thriving CanYa ecosystem.</p>
+      <p class="text-center">DAO Members complete tasks for autonomous payments, enjoy perks and keep the CanYa DAO Fund prosperous.</p>
+      <p class="text-primary text-center" style="font-size:2.25rem">$USD {{ convertToLocaleString(getCANUSD()) }}</p>
+      <p class="fw-300 text-center" style="font-size:1.25rem">(Current Fund Size)</p>
+      <div style="padding-top:20px"></div>
+    </div>
 
-          <div class="container">
-          <br><br>
-          <div class="row gap-y  bg-lgrey">
-            <div class="col-12 col-md-6 col-lg-4">
-              <div class="card text-center card-bordered card-hover-shadow">
-                <div class="card-body">
-                  <h4 class="card-title" style="font-size:2.25rem">
-                    <a href="#" target="_blank">MEMBER</a>
-                  </h4>
-                  <p class="card-text">Minimum entry to the DAO</p>
-                  <p class="card-text">Voting on proposals</p>
-                  <p class="card-text">Small tasks to earn rewards</p>
-                  <p class="card-text">People-powered</p>
-                  <p class="card-text">Work any time, any where</p>
-                  <p class="text-primary" style="font-size:2.25rem">1,000 CAN</p>
-                  <p class="fw-300" style="font-size:1.25rem">Stake Required</p>
-                  <p class="card-text"><small class="text-muted">Leave any time</small></p>
+    <div class="container" style="padding-top:60px">
+      <div class="row gap-y  bg-lgrey">
+        <div class="col-12 col-md-6 col-lg-6">
+          <div class="card text-center card-bordered card-hover-shadow">
+            <div class="card-body">
+              <h4 class="card-title" style="font-size:2.25rem">
+                <a href="#" target="_blank">{{getName(0) | uppercase }}</a>
+              </h4>
+              <a *ngFor="let perk of perks0; let i = index">
+                <p>{{perk}}</p>
+              </a>
+              <p class="text-primary" style="font-size:2.25rem">{{ getStake(0) | number:0}} CAN</p>
+              <p class="fw-300" style="font-size:1.25rem">Stake Required</p>
+              <p class="card-text"><small class="text-muted">Leave any time</small></p>
 
-                  <button type="button" class="btn btn-lg text-white my-1" style="background-image: linear-gradient(122deg, #33ccff, #4decca);border-radius: 64px" data-toggle="modal" data-target=".bd-example-modal-lg">GET STARTED</button>
-                  <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-lg">
-                      <div class="modal-content">
-                        <div style="padding-top:10px"></div>
-                        <strong class="text-center fw-300" style="font-size:1.25rem">CONFIRMATION</strong>
-                        <div style="padding-top:10px"></div>
-                        <p class="text-center">You are joining the CanYa DAO as Member</p>
-                        <p class="text-primary" style="font-size:2.25rem">1,000 CAN</p>
-                        <p class="fw-300" style="font-size:1.25rem">Stake Required</p>
-                        <div style="padding-top:10px"></div>
-                        <strong class="text-left" style="padding-left:200px">- Stake is locked from your wallet</strong>
-                        <strong class="text-left" style="padding-left:200px">- You can unlock your stake at any time</strong>
-                        <strong class="text-left" style="padding-left:200px">- Tasks and rewards are coming soon</strong>
-                        <div style="padding-top:10px"></div>
-                          <p class="text-center"><a class="btn btn-primary btn-success" href="/">Return home</a></p>
-                        <div style="padding-top:10px"></div>
-                      </div>
-                    </div>
-                  </div>
+              <app-homemodal [id]="0"></app-homemodal>
 
-                </div>
-              </div>
-            </div>
-            <div class="col-12 col-md-6 col-lg-4">
-              <div class="card text-center card-bordered card-hover-shadow">
-                <div class="card-body">
-                  <h4 class="card-title" style="font-size:2.25rem"><a href="#" target="_blank">ADMIN</a></h4>
-                  <p class="card-text">Higher tier to Member</p>
-                  <p class="card-text">Submit proposals</p>
-                  <p class="card-text">Tasks to earn rewards</p>
-                  <p class="card-text">Dispute resolution</p>
-                  <p class="card-text">Work any time, any where</p>
-                  <p class="text-primary" style="font-size:2.25rem">10,000 CAN</p>
-                  <p class="fw-300" style="font-size:1.25rem">Stake Required</p>
-                  <p class="card-text"><small class="text-muted">Minimum of 30 days since joining</small></p>
-                  <button type="button" class="btn btn-lg text-white my-1" style="background-image: linear-gradient(122deg, #33ccff, #4decca);border-radius: 64px" data-toggle="modal" data-target=".bd-example-modal-lg">GET STARTED</button>
-                  <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-lg">
-                      <div class="modal-content">
-                        <div style="padding-top:10px"></div>
-                        <strong class="text-center fw-300" style="font-size:1.25rem">CONFIRMATION</strong>
-                        <div style="padding-top:10px"></div>
-                        <p class="text-center">You are joining the CanYa DAO as ADMIN</p>
-                        <p class="text-primary" style="font-size:2.25rem">10,000 CAN</p>
-                        <p class="fw-300" style="font-size:1.25rem">Stake Required</p>
-                        <div style="padding-top:10px"></div>
-                        <strong class="text-left" style="padding-left:200px">- Stake is locked from your wallet</strong>
-                        <strong class="text-left" style="padding-left:200px">- You can unlock your stake at any time</strong>
-                        <strong class="text-left" style="padding-left:200px">- Tasks and rewards are coming soon</strong>
-                        <div style="padding-top:10px"></div>
-                          <p class="text-center"><a class="btn btn-primary btn-success" href="/">Return home</a></p>
-                        <div style="padding-top:10px"></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-12 col-lg-4 hidden-md-down">
-              <div class="card text-center card-bordered card-hover-shadow">
-                <div class="card-body">
-                  <h4 class="card-title" style="font-size:2.25rem">
-                    <a href="#" target="_blank">CORE</a>
-                  </h4>
-                  <p class="card-text">Ultimate tier</p>
-                  <p class="card-text">Decide and veto proposals</p>
-                  <p class="card-text">Credential access</p>
-                  <p class="card-text">Govern a large fund</p>
-                  <p class="card-text">Build the future</p>
-                  <p class="text-primary" style="font-size:2.25rem">100,000 CAN</p>
-                  <p class="fw-300" style="font-size:1.25rem">Stake Required</p>
-                  <p class="card-text"><small class="text-muted">Minimum of 180 days since joining</small></p>
-                  <button type="button" class="btn btn-lg text-white my-1" style="background-image: linear-gradient(122deg, #33ccff, #4decca);border-radius: 64px" data-toggle="modal" data-target=".bd-example-modal-lg">GET STARTED</button>
-                  <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-lg">
-                      <div class="modal-content">
-                        <div style="padding-top:10px"></div>
-                        <strong class="text-center fw-300" style="font-size:1.25rem">CONFIRMATION</strong>
-                        <div style="padding-top:10px"></div>
-                        <p class="text-center">You are joining the CanYa DAO as CORE</p>
-                        <p class="text-primary" style="font-size:2.25rem">100,000 CAN</p>
-                        <p class="fw-300" style="font-size:1.25rem">Stake Required</p>
-                        <div style="padding-top:10px"></div>
-                        <strong class="text-left" style="padding-left:200px">- Stake is locked from your wallet</strong>
-                        <strong class="text-left" style="padding-left:200px">- You can unlock your stake at any time</strong>
-                        <strong class="text-left" style="padding-left:200px">- Tasks and rewards are coming soon</strong>
-                        <div style="padding-top:10px"></div>
-                          <p class="text-center"><a class="btn btn-primary btn-success" href="/">Return home</a></p>
-                        <div style="padding-top:10px"></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
-          <br><br>
         </div>
 
-                      </div>
+        <div class="col-12 col-md-6 col-lg-6">
+          <div class="card text-center card-bordered card-hover-shadow">
+            <div class="card-body">
+              <h4 class="card-title" style="font-size:2.25rem">
+                <a href="#" target="_blank">{{getName(1) | uppercase}}</a>
+              </h4>
+              <a *ngFor="let perk of perks1; let i = index">
+                <p>{{perk}}</p>
+              </a>
 
-                      <div class="col-md-1"></div>
-                </div>
+              <p class="text-primary" style="font-size:2.25rem">{{ getStake(1) | number:0}} CAN</p>
+              <p class="fw-300" style="font-size:1.25rem">Stake Required</p>
+              <p class="card-text"><small class="text-muted">Minimum of {{getPeriod(1)}} days since joining</small></p>
+
+              <app-homemodal  [id]="1"></app-homemodal>
+
             </div>
-          </section>
-    </section>
+          </div>
+        </div>
 
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('#sidebarCollapse').on('click', function () {
-                $('#sidebar').toggleClass('active');
-            });
-        });
-    </script>
+        <div class="col-12 col-md-6 col-lg-6">
+          <div class="card text-center card-bordered card-hover-shadow">
+            <div class="card-body">
+              <h4 class="card-title" style="font-size:2.25rem">
+                <a href="#" target="_blank">{{getName(2) | uppercase }}</a>
+              </h4>
+
+              <a *ngFor="let perk of perks2; let i = index">
+                <p>{{perk}}</p>
+              </a>
+
+              <p class="text-primary" style="font-size:2.25rem">{{ getStake(2) | number:0}} CAN</p>
+              <p class="fw-300" style="font-size:1.25rem">Stake Required</p>
+              <p class="card-text"><small class="text-muted">Minimum of {{getPeriod(2)}} days since joining</small></p>
+
+
+              <app-homemodal  [id]="2"></app-homemodal>
+
+
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-6">
+          <div class="card text-center card-bordered card-hover-shadow">
+            <div class="card-body">
+              <h4 class="card-title" style="font-size:2.25rem">
+                <a href="#" target="_blank">{{getName(3) | uppercase }}</a>
+              </h4>
+
+              <a *ngFor="let perk of perks3; let i = index">
+                <p>{{perk}}</p>
+              </a>
+
+              <p class="text-primary" style="font-size:2.25rem">{{ getStake(3) | number:0}} CAN</p>
+              <p class="fw-300" style="font-size:1.25rem">Stake Required</p>
+              <p class="card-text"><small class="text-muted">Minimum of {{getPeriod(3)}} days since joining</small></p>
+
+
+              <app-homemodal  [id]="3"></app-homemodal>
+
+
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+      <br><br>
+    </div>
+
+  </section>
 
 
 </main>
