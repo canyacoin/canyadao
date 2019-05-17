@@ -1,7 +1,8 @@
 import { Component, OnInit, AfterViewInit} from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Tier } from '../dataTier';
-import { DATADAO } from '../dataDAO';
+import { Member } from '../dataMember';
+import { DaoService } from '../dao.service';
 
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
@@ -19,7 +20,8 @@ import { WalletService } from '../wallet.service';
 
 export class HomeComponent implements OnInit, AfterViewInit {
 
-  dataDAO = DATADAO;
+  dataDAO: Tier[];
+  memberDAO: Member;
   perks0 = []; perks1 = []; perks2 = [];  perks3 = [];
 
   canAmount = 20000000;
@@ -41,7 +43,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
   constructor(private router: Router,
     private activatedRoute:  ActivatedRoute,
     private modalService: NgbModal,
-    private walletService: WalletService) {}
+    private walletService: WalletService,
+    private daoService: DaoService) {}
 
 
     ngOnInit() {
@@ -63,6 +66,9 @@ export class HomeComponent implements OnInit, AfterViewInit {
     this.perks1 = this.getPerks(1);
     this.perks2 = this.getPerks(2);
     this.perks3 = this.getPerks(3);
+
+    this.dataDAO = this.daoService.getDataDAO();
+    this.memberDAO = this.daoService.getMemberDAO();
 
     // Alert Timer
     setTimeout(() => this.staticAlertClosed = true, 10000);
@@ -88,25 +94,37 @@ export class HomeComponent implements OnInit, AfterViewInit {
     return this.walletService.walletNone;
   }
 
+
+
   getStake(id): number {
-    const tier = this.dataDAO.find(tier => tier.id === id);
-    return tier.stake;
+    return this.daoService.getStake(id);
   }
 
   getName(id): string {
-    const tier = this.dataDAO.find(tier => tier.id === id);
-    return tier.name;
+    return this.daoService.getName(id);
   }
 
   getPeriod(id): number {
-    const tier = this.dataDAO.find(tier => tier.id === id);
-    return tier.period;
+    return this.daoService.getPeriod(id);
   }
 
   getPerks(id): string[] {
-    const tier = this.dataDAO.find(tier => tier.id === id);
-    return tier.perks;
+    return this.daoService.getPerks(id);
   }
+
+  getMemberWallet(): string {
+    return this.daoService.getMemberWallet();
+  }
+  getMemberName(): string {
+    return this.daoService.getMemberName();
+  }
+  getMemberStake(): number {
+    return this.daoService.getMemberStake();
+  }
+  getMemberTier(): string {
+    return this.daoService.getMemberTier();
+  }
+
 
   open(content) {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
@@ -127,7 +145,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   }
 
   public navigateWallet(){
-    this.router.navigate(['/wallet'])
+    this.router.navigate(['/profile'])
   }
 
 

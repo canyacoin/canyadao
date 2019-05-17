@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { Router, ActivatedRoute } from '@angular/router';
 import { WalletService } from '../wallet.service';
+import { Tier } from '../dataTier';
+import { Member } from '../dataMember';
+import { DaoService } from '../dao.service';
 
 @Component({
   selector: 'app-profile',
@@ -12,8 +15,12 @@ export class ProfileComponent implements OnInit {
 
   closeResult: string;
   id = 2;
+  typeBtn:string;
+  tierDAO:string;
 
-  constructor(private modalService: NgbModal, private walletService: WalletService) { }
+  constructor(private modalService: NgbModal,
+    private walletService: WalletService,
+    private daoService: DaoService) { }
 
   open(content) {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
@@ -34,6 +41,7 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.tierDAO = this.daoService.getMemberTier();
   }
 
   setID(id): void {
@@ -54,6 +62,36 @@ export class ProfileComponent implements OnInit {
 
   forgetWallet(): void{
     this.walletService.forgetWallet();
+  }
+
+  getStake(id): number {
+    return this.daoService.getStake(id);
+  }
+
+  getName(id): string {
+    return this.daoService.getName(id);
+  }
+
+  getPeriod(id): number {
+    return this.daoService.getPeriod(id);
+  }
+
+  getPerks(id): string[] {
+    return this.daoService.getPerks(id);
+  }
+
+  getMemberWallet(): string {
+    return this.daoService.getMemberWallet();
+  }
+  getMemberName(): string {
+    return this.daoService.getMemberName();
+  }
+  getMemberStake(): number {
+    return this.daoService.getMemberStake();
+  }
+
+  getMemberTier(): string {
+    return this.daoService.getMemberTier();
   }
 
   onButtonGroupClick($event){

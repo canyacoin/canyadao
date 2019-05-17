@@ -1,7 +1,9 @@
 import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
-import { DATADAO } from '../dataDAO';
+import { Tier } from '../dataTier';
+import { Member } from '../dataMember';
+import { DaoService } from '../dao.service';
 
 
 @Component({
@@ -12,28 +14,44 @@ import { DATADAO } from '../dataDAO';
 })
 export class WithdrawmodalComponent implements OnInit {
 
-    @Input() id: number;
-      dataDAO = DATADAO;
+    @Input() typeBtn: string;
+    @Input() tierDAO: string;
       closeResult: string;
 
-  constructor(private modalService: NgbModal) { }
+  constructor(private modalService: NgbModal,
+  private daoService: DaoService) { }
 
   ngOnInit() {
   }
 
   getStake(id): number {
-    const tier = this.dataDAO.find(tier => tier.id === id);
-    return tier.stake;
+    return this.daoService.getStake(id);
   }
 
   getName(id): string {
-    const tier = this.dataDAO.find(tier => tier.id === id);
-    return tier.name;
+    return this.daoService.getName(id);
   }
 
   getPeriod(id): number {
-    const tier = this.dataDAO.find(tier => tier.id === id);
-    return tier.period;
+    return this.daoService.getPeriod(id);
+  }
+
+  getPerks(id): string[] {
+    return this.daoService.getPerks(id);
+  }
+
+  getMemberWallet(): string {
+    return this.daoService.getMemberWallet();
+  }
+  getMemberName(): string {
+    return this.daoService.getMemberName();
+  }
+  getMemberStake(): number {
+    return this.daoService.getMemberStake();
+  }
+
+  getMemberTier(): string {
+    return this.daoService.getMemberTier();
   }
 
   open(content) {
@@ -52,6 +70,11 @@ export class WithdrawmodalComponent implements OnInit {
     } else {
       return  `with: ${reason}`;
     }
+  }
+
+  convertToLocaleString(variable) {
+    const withCommas = parseFloat(variable).toFixed(2);
+    return withCommas.replace(/\d(?=(\d{3})+\.)/g, '$&,');
   }
 
 }

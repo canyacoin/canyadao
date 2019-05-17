@@ -16,12 +16,12 @@
             <div class="col">
               <div class="row text-left">
                 <div class="col">
-                  <h2 class="text-primary" style="font-size:1.5rem">Profile</h2>
+                  <h2 class="text-primary" style="font-size:1.5rem">Profile: {{getMemberName()}}</h2>
                 </div>
               </div>
               <div class="row text-left">
                 <div class="col">
-                  <p><span class="badge badge-pill badge-md badge-default">{{getWallet()}}</span>
+                  <p><span class="badge badge-pill badge-md badge-default">{{getMemberWallet()}}</span>
                 </div>
               </div>
             </div>
@@ -40,7 +40,7 @@
             <p class="text-primary" style="font-size:1rem">2,000 CAN</p>
           </div>
           <div class="col-md-6 text-right">
-            <p class="text-right"><a class="btn btn-primary btn-w-xl" [routerLink]="['/home']">UPGRADE</a></p>
+            <app-withdrawmodal [tierDAO]="getMemberTier()" [typeBtn]="'u'"></app-withdrawmodal>
           </div>
         </div>
         <div class="row text-left">
@@ -51,7 +51,7 @@
             <p class="text-primary" style="font-size:1rem">1,000 CAN</p>
           </div>
           <div class="col-md-6 text-right">
-            <p class="text-right"><a class="btn btn-warning btn-w-xl" [routerLink]="['/home']">DOWNGRADE</a></p>
+            <app-withdrawmodal [tierDAO]="getMemberTier()" [typeBtn]="'d'"></app-withdrawmodal>
           </div>
         </div>
         <div class="row text-left">
@@ -64,7 +64,7 @@
           </div>
           <div class="col-md-6 text-right">
 
-            <app-withdrawmodal [id]="0"></app-withdrawmodal>
+            <app-withdrawmodal [tierDAO]="getMemberTier()" [typeBtn]="'w'"></app-withdrawmodal>
 
           </div>
         </div>
