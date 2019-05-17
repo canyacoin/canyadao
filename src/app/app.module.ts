@@ -19,7 +19,6 @@ import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './pagenotfound/pagenotfound.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ModalComponent } from './modal/modal.component';
-import { WalletComponent } from './wallet/wallet.component';
 import { HomemodalComponent } from './homemodal/homemodal.component';
 import { WithdrawmodalComponent } from './withdrawmodal/withdrawmodal.component';
 import { WalletSwitchComponent } from './walletswitch/walletswitch.component';
@@ -33,7 +32,6 @@ import { WalletSwitchComponent } from './walletswitch/walletswitch.component';
     PageNotFoundComponent,
     ProfileComponent,
     ModalComponent,
-    WalletComponent,
     HomemodalComponent,
     WithdrawmodalComponent,
     WalletSwitchComponent,

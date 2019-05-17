@@ -1,16 +1,13 @@
 import { Component, OnInit, AfterViewInit} from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Tier } from '../dataTier';
-import { Member } from '../dataMember';
-import { DaoService } from '../dao.service';
-
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
-
 import {Subject} from 'rxjs';
 import {debounceTime} from 'rxjs/operators';
 
 import { WalletService } from '../wallet.service';
-
+import { Tier } from '../dataTier';
+import { Member } from '../dataMember';
+import { DaoService } from '../dao.service';
 
 @Component({
   selector: 'app-home',
@@ -48,6 +45,10 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
 
     ngOnInit() {
+
+      // Init DB Model
+      // this.daoService.loadDAO();
+
       setTimeout( () => {
         this.loading = false;
         this.checkWallet();
@@ -67,8 +68,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
     this.perks2 = this.getPerks(2);
     this.perks3 = this.getPerks(3);
 
-    this.dataDAO = this.daoService.getDataDAO();
-    this.memberDAO = this.daoService.getMemberDAO();
+    // this.dataDAO = this.daoService.getDataDAO();
+    // this.memberDAO = this.daoService.getMemberDAO();
 
     // Alert Timer
     setTimeout(() => this.staticAlertClosed = true, 10000);
@@ -118,13 +119,10 @@ export class HomeComponent implements OnInit, AfterViewInit {
   getMemberName(): string {
     return this.daoService.getMemberName();
   }
-  getMemberStake(): number {
-    return this.daoService.getMemberStake();
-  }
-  getMemberTier(): string {
+
+  getMemberTier(): number {
     return this.daoService.getMemberTier();
   }
-
 
   open(content) {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
@@ -144,8 +142,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
     }
   }
 
-  public navigateWallet(){
-    this.router.navigate(['/profile'])
+  public navigate(url){
+    this.router.navigate([url])
   }
 
 

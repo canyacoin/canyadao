@@ -4,7 +4,7 @@ import { WalletService } from '../wallet.service'
 
 @Component({
   selector: 'app-wlt-connect',
-  styleUrls: ['../wallet/wallet.component.css'],
+  styleUrls: ['../profile/profile.component.css'],
   template: `<p class="fw-300" style="font-size:1.5rem">Wallet Connect (Recommended)</p>
               <p>Scan a QR code from your mobile wallet using WalletConnect.</p>
               <p>Recommended Browsers:
@@ -44,7 +44,7 @@ setWallet(){
 
 @Component({
   selector: 'app-wlt-ledger',
-    styleUrls: ['../wallet/wallet.component.css'],
+    styleUrls: ['../profile/profile.component.css'],
   template: `<p class="fw-300" style="font-size:1.5rem">Ledger Nano (Recommended)</p>
   <p>Recommended Browsers:
     <a href="https://www.google.com/chrome/" target="_blank"><strong>Google Chrome</strong></a>

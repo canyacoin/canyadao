@@ -4,6 +4,8 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { Tier } from '../dataTier';
 import { Member } from '../dataMember';
 import { DaoService } from '../dao.service';
+import { WalletService } from '../wallet.service';
+import { ProfileComponent } from '../profile/profile.component';
 
 
 @Component({
@@ -19,7 +21,9 @@ export class WithdrawmodalComponent implements OnInit {
       closeResult: string;
 
   constructor(private modalService: NgbModal,
-  private daoService: DaoService) { }
+  private daoService: DaoService,
+  private walletService: WalletService,
+  private profile: ProfileComponent) { }
 
   ngOnInit() {
   }
@@ -46,13 +50,37 @@ export class WithdrawmodalComponent implements OnInit {
   getMemberName(): string {
     return this.daoService.getMemberName();
   }
-  getMemberStake(): number {
-    return this.daoService.getMemberStake();
-  }
 
-  getMemberTier(): string {
+  getMemberTier(): number {
     return this.daoService.getMemberTier();
   }
+
+  getStaked(): number {
+    return this.walletService.getStaked();
+  }
+
+  stake(id){
+    const current = this.getStaked();
+    const toStake = this.getStake(id)-current;
+    this.walletService.stake(toStake);
+    this.daoService.stake(id);
+    this.profile.updateProfile(true, id);
+    }
+
+  unStake(id){
+    const tierAmt = this.getStake(id);
+    const toUnStake = this.getStaked()-tierAmt;
+    this.walletService.unStake(toUnStake);
+    this.daoService.unStake(id);
+    this.profile.tierDAO = id;
+    }
+
+  withdrawAll(){
+    this.walletService.withdrawAll();
+    this.daoService.withdrawAll();
+    this.profile.updateProfile(false, 0);
+  }
+
 
   open(content) {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title', windowClass: 'content-center'}).result.then((result) => {

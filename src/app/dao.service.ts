@@ -12,15 +12,18 @@ export class DaoService {
   dataDAO = DATADAO;
   memberDAO = MEMBERDAO;
 
+  // DB Model
+  member: Member;
+
   constructor() { }
 
-  getDataDAO(): Tier[] {
-    return this.dataDAO;
-  }
+  loadDAO() {
+    this.member.wallet = this.memberDAO.wallet;
+    this.member.name = this.memberDAO.name;
+    this.member.tier = this.memberDAO.tier;
+    this.member.date = this.memberDAO.date;
+    }
 
-  getMemberDAO(): Member {
-    return this.memberDAO;
-  }
 
   getStake(id): number {
     const tier = this.dataDAO.find(tier => tier.id === id);
@@ -43,20 +46,36 @@ export class DaoService {
   }
 
   getMemberWallet(): string {
-    const wallet = this.memberDAO.wallet;
-    return wallet;
+    return this.memberDAO.wallet;
   }
   getMemberName(): string {
-    const name = this.memberDAO.name;
-    return name;
+    return this.memberDAO.name;
   }
-  getMemberStake(): number {
-    const stake = this.memberDAO.stake;
-    return stake;
-  }
-  getMemberTier(): string {
+
+  getMemberTier(): number {
     return this.memberDAO.tier;
   }
 
+  getMemberDate() {
+    return new Date(this.memberDAO.date);
+  }
+
+  stake(id) {
+    this.memberDAO.tier = id;
+    this.memberDAO.name = this.getName(id);
+    var today = new Date();
+    this.memberDAO.date = today.toDateString();
+  }
+
+  unStake(id) {
+    this.memberDAO.tier = id;
+    this.memberDAO.name = this.getName(id);
+  }
+
+  withdrawAll(){
+    this.memberDAO.tier = 0;
+    this.memberDAO.name = '';
+    this.memberDAO.date = '';
+  }
 
 }

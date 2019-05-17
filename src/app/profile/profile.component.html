@@ -7,151 +7,156 @@
       <div class="container">
         <div class="shadow p-3 mb-5 bg-white rounded">
 
-      <div *ngIf="getWalletBool()">
+          <div *ngIf="getWalletBool()">
 
 
 
 
-          <div class="row text-right">
-            <div class="col">
+            <div class="row text-right">
+              <div class="col">
+                <div class="row text-left">
+                  <div class="col">
+                    <h2 class="text-primary" style="font-size:1.5rem">Profile: {{getMemberName()}}</h2>
+                  </div>
+                </div>
+                <div class="row text-left">
+                  <div class="col">
+                    <p><span class="badge badge-pill badge-md badge-default">{{getMemberWallet()}}</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col mr-5 align-self-center">
+                  <button class="btn btn-outline btn-danger btn-md" id="wallet-btn" (click)="forgetWallet()">FORGET WALLET</button>
+                </div>
+              </div>
+              <hr class="my-5">
+
+              <div style="padding-top:20px"></div>
               <div class="row text-left">
-                <div class="col">
-                  <h2 class="text-primary" style="font-size:1.5rem">Profile: {{getMemberName()}}</h2>
+                <div class="col-md-3">
+                  <b style="font-size:0.875rem">Wallet</b>
+                </div>
+                <div class="col-md-3">
+                  <p class="text-primary" style="font-size:1rem">{{convertToLocaleString(getWalletBal())}} CAN</p>
+                </div>
+                <div class="col-md-6 text-right">
+                  <app-withdrawmodal [tierDAO]="getMemberTier()" [typeBtn]="'u'"></app-withdrawmodal>
                 </div>
               </div>
               <div class="row text-left">
-                <div class="col">
-                  <p><span class="badge badge-pill badge-md badge-default">{{getMemberWallet()}}</span>
+                <div class="col-md-3">
+                  <b style="font-size:0.875rem">Stake</b>
+                </div>
+                <div class="col-md-3">
+                  <p class="text-primary" style="font-size:1rem">{{convertToLocaleString(getStaked())}} CAN</p>
+                </div>
+                <div class="col-md-6 text-right">
+                  <app-withdrawmodal [tierDAO]="getMemberTier()" [typeBtn]="'d'"></app-withdrawmodal>
                 </div>
               </div>
-            </div>
-            <div class="col mr-5 align-self-center">
-              <button class="btn btn-outline btn-danger btn-md" id="wallet-btn" (click)="forgetWallet()">FORGET WALLET</button>
-            </div>
-          </div>
-          <hr class="my-5">
 
-        <div style="padding-top:20px"></div>
-        <div class="row text-left">
-          <div class="col-md-3">
-            <b style="font-size:0.875rem">Wallet</b>
-          </div>
-          <div class="col-md-3">
-            <p class="text-primary" style="font-size:1rem">2,000 CAN</p>
-          </div>
-          <div class="col-md-6 text-right">
-            <app-withdrawmodal [tierDAO]="getMemberTier()" [typeBtn]="'u'"></app-withdrawmodal>
-          </div>
-        </div>
-        <div class="row text-left">
-          <div class="col-md-3">
-            <b style="font-size:0.875rem">Stake</b>
-          </div>
-          <div class="col-md-3">
-            <p class="text-primary" style="font-size:1rem">1,000 CAN</p>
-          </div>
-          <div class="col-md-6 text-right">
-            <app-withdrawmodal [tierDAO]="getMemberTier()" [typeBtn]="'d'"></app-withdrawmodal>
-          </div>
-        </div>
-        <div class="row text-left">
-          <div class="col-md-3">
-            <b style="font-size:0.875rem">Commencement</b>
-          </div>
-          <div class="col-md-3">
-            <p>01 June 2019</p>
-            <p>30 days</p>
-          </div>
-          <div class="col-md-6 text-right">
-
-            <app-withdrawmodal [tierDAO]="getMemberTier()" [typeBtn]="'w'"></app-withdrawmodal>
-
-          </div>
-        </div>
-        <div style="margin-top:20px"></div>
+              <div *ngIf="inDAO">
+              <div class="row text-left">
+                <div class="col-md-3">
+                  <b style="font-size:0.875rem">Commencement</b>
+                </div>
 
 
-      </div>
+                  <div class="col-md-3">
+                    <p> {{getMemberDate() | date: 'dd MMM yyyy'}} </p>
+                    <p>{{ dateDiff() }} days in the DAO</p>
+                  </div>
 
+                  <div class="col-md-6 text-right">
+                    <app-withdrawmodal [tierDAO]="getMemberTier()" [typeBtn]="'w'"></app-withdrawmodal>
+                  </div>
 
-      <div *ngIf="getWalletNone()">
-
-        <div class="row" style="margin-top:20px">
-          <div class="col-md-12 text-center">
-            <strong class="fw-300" style="font-size:1.25rem">CONNECT WALLET</strong>
-            <hr style="margin:5px">
-            <p class="text-center" style="color:#ff6666">Please check you are visiting https://canyadao.com</p>
-            <hr style="margin:3px">
-          </div>
-          <h3 style="margin-left:20px">Select Wallet</h3>
-        </div>
-
-
-
-        <div class="row text-left">
-          <div class="col sidebar">
-            <div style="margin-top:20px"></div>
-
-            <div class="row">
-              <div>
-                <a (click)="setID('2')" class="hvr-underline-reveal hvr-icon-fade hvr-icon-push">
-                  <i class="fa fa-star hvr-icon blue"></i>
-                  WALLET CONNECT
-                  <p class="text-muted mb-1 badge badge-pill badge-sm badge-default">coming soon</p>
-                </a>
+                </div>
               </div>
-            </div>
-            <div style="margin-top:20px"></div>
-            <div class="row">
-              <div>
-                <a (click)="setID('2')" class="hvr-underline-reveal hvr-icon-fade hvr-icon-push">
-                  <i class="fa fa-star hvr-icon blue" style="colour:"></i>
-                  LEDGER
-                  <p class="text-muted mb-1 badge badge-pill badge-sm badge-default">coming soon</p>
-                </a>
-
-              </div>
-            </div>
-            <div style="margin-top:20px"></div>
-
-            <div class="row">
-              <div>
-                <a (click)="setID('2'); onButtonGroupClick($event)" class="hvr-underline-reveal">
-                  KEYSTORE
-                </a>
-              </div>
-            </div>
-            <div style="margin-top:20px"></div>
-            <div class="row">
-              <div>
-                <a (click)="setID('3'); onButtonGroupClick($event)" class="hvr-underline-reveal">
-                  WORD-PHRASE
-                </a>
-              </div>
-            </div>
-            <div style="margin-top:20px"></div>
-          </div>
-
-          <div class="col" style="margin-left=40px padding-left=20px margin-top:20px">
-
-            <div [ngSwitch]="id">
               <div style="margin-top:20px"></div>
-              <app-wlt-connect    *ngSwitchDefault    [id]="id"></app-wlt-connect>
-              <app-wlt-ledger      *ngSwitchCase="1"      [id]="id"></app-wlt-ledger>
-              <app-wlt-keystore *ngSwitchCase="2" [id]="id"></app-wlt-keystore>
-              <app-wlt-phrase  *ngSwitchCase="3"            [id]="id"></app-wlt-phrase>
+
+
             </div>
 
+
+            <div *ngIf="getWalletNone()">
+
+              <div class="row" style="margin-top:20px">
+                <div class="col-md-12 text-center">
+                  <strong class="fw-300" style="font-size:1.25rem">CONNECT WALLET</strong>
+                  <hr style="margin:5px">
+                  <p class="text-center" style="color:#ff6666">Please check you are visiting https://canyadao.com</p>
+                  <hr style="margin:3px">
+                </div>
+                <h3 style="margin-left:20px">Select Wallet</h3>
+              </div>
+
+
+
+              <div class="row text-left">
+                <div class="col sidebar">
+                  <div style="margin-top:20px"></div>
+
+                  <div class="row">
+                    <div>
+                      <a (click)="setID('2')" class="hvr-underline-reveal hvr-icon-fade hvr-icon-push">
+                        <i class="fa fa-star hvr-icon blue"></i>
+                        WALLET CONNECT
+                        <p class="text-muted mb-1 badge badge-pill badge-sm badge-default">coming soon</p>
+                      </a>
+                    </div>
+                  </div>
+                  <div style="margin-top:20px"></div>
+                  <div class="row">
+                    <div>
+                      <a (click)="setID('2')" class="hvr-underline-reveal hvr-icon-fade hvr-icon-push">
+                        <i class="fa fa-star hvr-icon blue" style="colour:"></i>
+                        LEDGER
+                        <p class="text-muted mb-1 badge badge-pill badge-sm badge-default">coming soon</p>
+                      </a>
+
+                    </div>
+                  </div>
+                  <div style="margin-top:20px"></div>
+
+                  <div class="row">
+                    <div>
+                      <a (click)="setID('2'); onButtonGroupClick($event)" class="hvr-underline-reveal">
+                        KEYSTORE
+                      </a>
+                    </div>
+                  </div>
+                  <div style="margin-top:20px"></div>
+                  <div class="row">
+                    <div>
+                      <a (click)="setID('3'); onButtonGroupClick($event)" class="hvr-underline-reveal">
+                        WORD-PHRASE
+                      </a>
+                    </div>
+                  </div>
+                  <div style="margin-top:20px"></div>
+                </div>
+
+                <div class="col" style="margin-left=40px padding-left=20px margin-top:20px">
+
+                  <div [ngSwitch]="id">
+                    <div style="margin-top:20px"></div>
+                    <app-wlt-connect    *ngSwitchDefault    [id]="id"></app-wlt-connect>
+                    <app-wlt-ledger      *ngSwitchCase="1"      [id]="id"></app-wlt-ledger>
+                    <app-wlt-keystore *ngSwitchCase="2" [id]="id"></app-wlt-keystore>
+                    <app-wlt-phrase  *ngSwitchCase="3"            [id]="id"></app-wlt-phrase>
+                  </div>
+
+                </div>
+                <div style="padding-top:20px"></div>
+              </div>
+            </div>
+            <div style="margin-top:20px"></div>
+
+
+
           </div>
-          <div style="padding-top:20px"></div>
         </div>
-      </div>
-      <div style="margin-top:20px"></div>
-
-
-
-  </div>
-</div>
-</section>
-</section>
-</main>
+      </section>
+    </section>
+  </main>

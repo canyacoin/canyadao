@@ -32,94 +32,100 @@
         <div class="row text-center mx-5">
           <div class="col-sm-6 text-center">
             <div class="row text-center">
-              <strong>{{getName(3)}}</strong>
+              <strong>{{getName(3) | uppercase}}</strong>
             </div>
             <div class="row text-center">
               <p>{{convertToLocaleString(getStake(3))}} CAN</p>
             </div>
             <div *ngIf="typeBtn=='u'" class="row text-center">
-              <p class="text-muted">Additional: {{convertToLocaleString(getStake(3) - getMemberStake())}} CAN</p>
+              <p class="text-muted">Additional: {{convertToLocaleString(getStake(3) - getStaked())}} CAN</p>
             </div>
           </div>
           <div *ngIf="typeBtn=='u'" class="col-sm-6 text-center align-self-center">
-            <button type="button" class="btn btn-outline btn-primary text-center" (click)="modal.close('Save click')">UPGRADE</button>
+            <button type="button" class="btn btn-outline btn-primary text-center" (click)="[modal.close('Save click'), stake(3)]">UPGRADE</button>
           </div>
         </div>
         <hr class="my-10">
       </div>
 
       <!-- CORE TIER -->
-      <div *ngIf="tierDAO=='node' || ((tierDAO=='admin' || tierDAO=='member') && typeBtn=='u')">
+      <div *ngIf="tierDAO=='3' || ((tierDAO=='1' || tierDAO=='0' || tierDAO=='') && typeBtn=='u')">
         <div class="row text-center mx-5">
           <div class="col-sm-6 text-center">
             <div class="row text-center">
-              <strong>{{getName(2)}}</strong>
+              <strong>{{getName(2) | uppercase}}</strong>
             </div>
             <div class="row text-center">
               <p>{{convertToLocaleString(getStake(2))}} CAN</p>
             </div>
             <div *ngIf="typeBtn=='w' || typeBtn=='d'" class="row text-center">
-              <p class="text-muted">Releases: {{ convertToLocaleString(getMemberStake() - getStake(2))}} CAN</p>
+              <p class="text-muted">Releases: {{ convertToLocaleString(getStaked() - getStake(2))}} CAN</p>
             </div>
             <div *ngIf="typeBtn=='u'" class="row text-center">
-              <p class="text-muted">Additional: {{convertToLocaleString(getStake(2) - getMemberStake())}} CAN</p>
+              <p class="text-muted">Additional: {{convertToLocaleString(getStake(2) - getStaked())}} CAN</p>
             </div>
           </div>
           <div *ngIf="typeBtn=='w' || typeBtn=='d'" class="col-sm-6 text-center align-self-center">
-            <button type="button" class="btn btn-outline btn-warning text-center" (click)="modal.close('Save click')">DOWNGRADE</button>
+            <button type="button" class="btn btn-outline btn-warning text-center" (click)="[modal.close('Save click'), unStake(2)]">DOWNGRADE</button>
           </div>
           <div *ngIf="typeBtn=='u'" class="col-sm-6 text-center align-self-center">
-            <button type="button" class="btn btn-outline btn-primary text-center" (click)="modal.close('Save click')">UPGRADE</button>
+            <button type="button" class="btn btn-outline btn-primary text-center" (click)="[modal.close('Save click'), stake(2)]">UPGRADE</button>
           </div>
         </div>
         <hr class="my-10">
       </div>
 
       <!-- ADMIN TIER -->
-      <div *ngIf="(tierDAO=='core' && (typeBtn=='w' || typeBtn=='d'))  || (tierDAO=='node' && (typeBtn=='d' || typeBtn=='w')) || (tierDAO=='member' && typeBtn=='u')">
+      <div *ngIf="(tierDAO=='2' && (typeBtn=='w' || typeBtn=='d'))  || (tierDAO=='3' && (typeBtn=='d' || typeBtn=='w')) || ((tierDAO=='0' ||  tierDAO=='') && typeBtn=='u')">
         <div class="row text-center mx-5">
           <div class="col-sm-6 text-center">
             <div class="row text-center">
-              <strong>{{getName(1)}}</strong>
+              <strong>{{getName(1) | uppercase}}</strong>
             </div>
             <div class="row text-center">
               <p class="">{{convertToLocaleString(getStake(1))}} CAN</p>
             </div>
 
             <div *ngIf="typeBtn=='w' || typeBtn=='d'" class="row text-center">
-              <p class="text-muted">Releases: {{ convertToLocaleString(getMemberStake() - getStake(1)) }} CAN</p>
+              <p class="text-muted">Releases: {{ convertToLocaleString(getStaked() - getStake(1)) }} CAN</p>
             </div>
             <div *ngIf="typeBtn=='u'" class="row text-center">
-              <p class="text-muted">Additional:  {{convertToLocaleString(getStake(1) - getMemberStake())}}  CAN</p>
+              <p class="text-muted">Additional:  {{convertToLocaleString(getStake(1) - getStaked())}}  CAN</p>
             </div>
 
           </div>
           <div *ngIf="typeBtn=='w' || typeBtn=='d'" class="col-sm-6 text-center align-self-center">
-            <button type="button" class="btn btn-outline btn-warning text-center" (click)="modal.close('Save click')">DOWNGRADE</button>
+            <button type="button" class="btn btn-outline btn-warning text-center" (click)="[modal.close('Save click'), unStake(1)]">DOWNGRADE</button>
           </div>
           <div *ngIf="typeBtn=='u'" class="col-sm-6 text-center align-self-center">
-            <button type="button" class="btn btn-outline btn-primary text-center" (click)="modal.close('Save click')">UPGRADE</button>
+            <button type="button" class="btn btn-outline btn-primary text-center" (click)="[modal.close('Save click'), stake(1)]">UPGRADE</button>
           </div>
         </div>
         <hr class="my-10">
       </div>
 
       <!-- MEMBER TIER -->
-      <div *ngIf="((tierDAO=='admin' || tierDAO=='core') && (typeBtn=='w' || typeBtn=='d')) || (tierDAO=='node' && (typeBtn=='d' || typeBtn=='w'))">
+      <div *ngIf="((tierDAO=='1' || tierDAO=='2') && (typeBtn=='w' || typeBtn=='d')) || (tierDAO=='3' && (typeBtn=='d' || typeBtn=='w')) ||  (tierDAO=='' && typeBtn=='u')">
         <div class="row text-center mx-5">
           <div class="col-sm-6 text-center">
             <div class="row text-center">
-              <strong>{{getName(0)}}</strong>
+              <strong>{{getName(0) | uppercase}}</strong>
             </div>
             <div class="row text-center">
               <p>{{convertToLocaleString(getStake(0))}} CAN</p>
             </div>
-            <div class="row text-center">
-              <p class="text-muted">Releases: {{ convertToLocaleString(getMemberStake() - getStake(0)) }} CAN</p>
+            <div *ngIf="typeBtn=='w' || typeBtn=='d'" class="row text-center">
+              <p class="text-muted">Releases: {{ convertToLocaleString(getStaked() - getStake(0)) }} CAN</p>
+            </div>
+            <div *ngIf="typeBtn=='u'" class="row text-center">
+              <p class="text-muted">Additional:  {{convertToLocaleString(getStake(0) - getStaked())}}  CAN</p>
             </div>
           </div>
           <div *ngIf="typeBtn=='w' || typeBtn=='d'" class="col-sm-6 text-center align-self-center">
-            <button type="button" class="btn btn-outline btn-warning text-center" (click)="modal.close('Save click')">DOWNGRADE</button>
+            <button type="button" class="btn btn-outline btn-warning text-center" (click)="[modal.close('Save click'), unStake(0)]">DOWNGRADE</button>
+          </div>
+          <div *ngIf="typeBtn=='u'" class="col-sm-6 text-center align-self-center">
+            <button type="button" class="btn btn-outline btn-primary text-center" (click)="[modal.close('Save click'), stake(0)]">UPGRADE</button>
           </div>
         </div>
         <hr class="my-10">
@@ -133,7 +139,7 @@
       <div *ngIf="typeBtn=='w'">
         <div class="row text-center">
           <div class="col">
-            <button type="button" class="btn btn-outline btn-danger text-center" (click)="modal.close('Save click')">WITHDRAW ALL</button>
+            <button type="button" class="btn btn-outline btn-danger text-center" (click)="[modal.close('Save click'), withdrawAll()]">WITHDRAW ALL</button>
           </div>
         </div>
       </div>
@@ -146,11 +152,11 @@
 
 </ng-template>
 
-<div *ngIf="typeBtn=='u' && (tierDAO=='member' || tierDAO=='admin' || tierDAO=='core')">
+<div *ngIf="typeBtn=='u' && (tierDAO=='' || tierDAO=='0' || tierDAO=='1' || tierDAO=='2')">
   <button class="btn btn-primary btn-w-xl"
   (click)="open(content)">UPGRADE</button>
 </div>
-<div *ngIf="typeBtn=='d' && (tierDAO=='admin' || tierDAO=='core' || tierDAO=='node')">
+<div *ngIf="typeBtn=='d' && (tierDAO=='1' || tierDAO=='2' || tierDAO=='3')">
   <button class="btn btn-primary btn-warning btn-w-xl"
   (click)="open(content)">DOWNGRADE</button>
 </div>

@@ -4,7 +4,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 import { WalletService } from '../wallet.service';
 import { HomeComponent } from '../home/home.component';
-import { DATADAO } from '../dataDAO';
+import { DaoService } from '../dao.service';
+
 
 
 @Component({
@@ -15,37 +16,26 @@ import { DATADAO } from '../dataDAO';
 })
 export class HomemodalComponent implements OnInit {
   @Input() id: number;
-  dataDAO = DATADAO;
+  @Input() view: number;
 
   closeResult: string;
 
-  constructor(private modalService: NgbModal, private homeComponent: HomeComponent, private walletService: WalletService) {}
+  constructor(private modalService: NgbModal,
+    private homeComponent: HomeComponent,
+    private walletService: WalletService,
+   private daoService: DaoService,
+  private router: Router
+) {}
 
   ngOnInit() {
+    this.view=0;
   }
 
   open(content) {
-    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title', windowClass: 'content-center'}).result.then((result) => {
-      this.closeResult = `Closed with: ${result}`;
-    }, (reason) => {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title', windowClass: 'content-center'}).result.then((result)=>
+    {this.closeResult = `Closed with: ${result}`, this.view=0;}, (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });
-  }
-
-  getWallet(): string{
-    return this.walletService.getWallet();
-  }
-
-  getWalletBool(): boolean{
-    return this.walletService.walletBool;
-  }
-
-  getWalletNone(): boolean{
-    return this.walletService.walletNone;
-  }
-
-  checkWallet(){
-    this.homeComponent.checkWallet();
   }
 
   private getDismissReason(reason: any): string {
@@ -58,25 +48,61 @@ export class HomemodalComponent implements OnInit {
     }
   }
 
-  public navigateWallet(){
-    this.homeComponent.navigateWallet();
+
+    public navigateProfile(){
+      this.homeComponent.navigate('/profile');
+    }
+
+  getWallet(): string{
+    return this.walletService.getWallet();
   }
 
-  getStake(id): number {
-    const tier = this.dataDAO.find(tier => tier.id === id);
-    return tier.stake;
+  getWalletBal(): number{
+    return this.walletService.getBalance();
   }
 
-  getName(id): string {
-    const tier = this.dataDAO.find(tier => tier.id === id);
-    return tier.name;
+  getWalletBool(): boolean{
+    return this.walletService.walletBool;
+    // return true;
   }
 
-  getPeriod(id): number {
-    const tier = this.dataDAO.find(tier => tier.id === id);
-    return tier.period;
+  getWalletNone(): boolean{
+    return this.walletService.walletNone;
+    // return false;
   }
 
+  getStaked(): number {
+    return this.walletService.getStaked();
+  }
+
+  checkWallet(){
+    this.homeComponent.checkWallet();
+  }
+
+
+
+    getStake(id): number {
+      return this.daoService.getStake(id);
+    }
+
+    getName(id): string {
+      return this.daoService.getName(id);
+    }
+
+    getPeriod(id): number {
+      return this.daoService.getPeriod(id);
+    }
+
+  stake(id){
+    const current = this.getStaked();
+    const toStake = this.getStake(id)-current;
+    this.walletService.stake(toStake);
+    this.daoService.stake(id);
+    }
+
+  enterSign(){
+    this.view=1;
+  }
 
 
 }

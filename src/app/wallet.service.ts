@@ -8,6 +8,8 @@ export class WalletService {
   public wallet: string = '';
   public walletBool: boolean = false;
   public walletNone: boolean = true;
+  public balance: number;
+  public staked: number;
 
   constructor() { }
 
@@ -15,6 +17,8 @@ export class WalletService {
     this.wallet = wallet;
     this.walletBool = true;
     this.walletNone = false;
+    this.balance = 102345.34;
+    this.staked = 0;
   }
   forgetWallet(): void{
     this.wallet = '';
@@ -25,6 +29,14 @@ export class WalletService {
     return this.wallet;
   }
 
+  getBalance(): number {
+    return this.balance;
+  }
+
+  getStaked(): number{
+    return this.staked;
+  }
+
   getWalletBool(): boolean {
     return this.walletBool;
   }
@@ -32,6 +44,23 @@ export class WalletService {
   getWalletNone(): boolean {
     return this.walletNone;
   }
+
+  stake(amount){
+    this.balance = this.balance - amount;
+    this.staked = this.staked + amount;
+  }
+
+  unStake(amount){
+    this.balance = this.balance + amount;
+    this.staked = this.staked - amount;
+  }
+
+  withdrawAll(){
+    this.balance = this.balance + this.staked;
+    this.staked = 0;
+  }
+
+
 
   OnInit(){
     this.wallet = '';
