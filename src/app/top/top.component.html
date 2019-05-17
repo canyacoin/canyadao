@@ -14,9 +14,7 @@
           <ul class="topbar-center nav mr-3">
           <li class="nav-item mr-20"><a class="nav-link" id="home-link" [routerLink]="['home']">HOME</a></li>
           <li class="nav-item mr-20"><a class="nav-link" class="nav-link" id="profile-link" [routerLink]="['profile']">PROFILE</a></li>
-          <a class="nav-link" id="wallet-link" [routerLink]="['wallet']">
-            <button class="badge badge-pill badge-sm badge-default">{{getWallet()}}</button>
-          </a>
+          <li class="nav-item mr-20 badge badge-pill badge-sm badge-default" style="vertical-align=middle">{{getWallet()}}</li>
         </ul>
 
       </div>
@@ -28,7 +26,7 @@
             </a>
           </li>
           <li class="nav-item mobile-only">
-            <a  class="nav-link" id="wallet-link" [routerLink]="['wallet']">
+            <a  class="nav-link" id="wallet-link" [routerLink]="['profile']">
               <button class="btn btn-primary btn-sm  btn-top" id="wallet-btn">CONNECT WALLET</button>
             </a>
           </li>
@@ -40,7 +38,7 @@
           <a class="top-btn" style="padding-right:10px" href="https://www.binance.org/en/create" target="_blank">
             <button _ngcontent-c1="" class="btn btn-primary btn-outline btn-sm btn-space" id="btn-create" type="submit">CREATE WALLET</button>
           </a>
-          <a  class="top-btn" id="wallet-link" [routerLink]="['wallet']">
+          <a  class="top-btn" id="wallet-link" [routerLink]="['profile']">
             <button class="btn btn-primary btn-sm  btn-top" id="wallet-btn">CONNECT WALLET</button>
           </a>
           <!-- <a class="top-btn text-right"> -->

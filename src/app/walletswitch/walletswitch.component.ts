@@ -14,11 +14,20 @@ import { WalletService } from '../wallet.service'
               </p>
 
               <hr>
-              <div class="px-30 text-center">
+              <div class="row">
+              <div class = "col text-center mr-30">
+              <img class="logo-default" src="assets/img/qr-code.svg"  width="auto" height="80px" alt="logo">
+              </div>
+              <div  class = "col text-left align-self-center">
+              <div class="px-30">
                 <div>
                   <button class="btn btn-primary btn-w-xl" (click)="setWallet()">Show QR Code</button>
                 </div>
               </div>
+              </div>
+              </div>
+
+
               <hr>
               <div style="padding-top:10px"></div>
               `
@@ -45,13 +54,17 @@ setWallet(){
   <hr>
 
   <div class="row bg-white">
-  <div class="col mx-30 py-30 bg-lgrey">
+  <div class="col mx-30 py-20 bg-lgrey">
   <div class="row">
-    <div class="col-2">
+    <div class="col-2 align-self-center">
       <p class="btn btn-round fw-400" style="width:35px; height: 35px; padding:0;letter-spacing: 0px;text-transform:none; color:#33ccff; border-color:#33ccff;font-size:18px;background-color: transparent">1</p>
     </div>
     <div class="col">
       <strong style="font-size:20 text-align:left">Connect Ledger and insert PIN</strong>
+      <p>Use a recommended browser</p>
+    </div>
+    <div class="col">
+    <img class="logo-default" src="assets/img/ledger-pin.svg"  width="auto" height="80px" alt="logo">
     </div>
   </div>
   </div>
@@ -61,13 +74,17 @@ setWallet(){
   <div style="padding-top:10px"></div>
 
   <div class="row bg-white">
-  <div class="col mx-30 py-30 bg-lgrey">
+  <div class="col mx-30 py-20 bg-lgrey">
   <div class="row">
-    <div class="col-2">
+    <div class="col-2 align-self-center">
       <p class="btn btn-round fw-400" style="width:35px; height: 35px; padding:0;letter-spacing: 0px;text-transform:none; color:#33ccff; border-color:#33ccff;font-size:18px;background-color: transparent">2</p>
     </div>
     <div class="col">
       <strong style="font-size:20 text-align:left">Open BinanceChain App</strong>
+      <p>"BinanceChain Ready" must be on screen</p>
+    </div>
+    <div class="col">
+    <img class="logo-default" src="assets/img/ledger-app.svg"  width="auto" height="80px" alt="logo">
     </div>
   </div>
   </div>
@@ -160,7 +177,7 @@ uploadFileToActivity() {
 
 @Component({
   selector: 'app-wlt-phrase',
-  template: `              <p class="fw-300" style="font-size:1.5rem">Enter 24-word Phrase</p>
+  template: `<p class="fw-300" style="font-size:1.5rem">Enter 24-word Phrase</p>
                 <form class="" action="index.html" method="post">
                   <div class="form-group">
                     <label for="InputKey1" style="font-size:1rem">Enter words here:</label>

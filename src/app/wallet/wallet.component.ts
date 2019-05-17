@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { WalletService } from '../wallet.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-wallet',

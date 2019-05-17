@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
-
+import { Router, ActivatedRoute } from '@angular/router';
+import { WalletService } from '../wallet.service';
 
 @Component({
   selector: 'app-profile',
@@ -10,8 +11,9 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 export class ProfileComponent implements OnInit {
 
   closeResult: string;
+  id = 2;
 
-  constructor(private modalService: NgbModal) { }
+  constructor(private modalService: NgbModal, private walletService: WalletService) { }
 
   open(content) {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
@@ -33,5 +35,41 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit() {
   }
+
+  setID(id): void {
+    this.id = id;
+  }
+
+  getWallet(): string{
+    return this.walletService.getWallet();
+  }
+
+  getWalletBool(): boolean{
+    return this.walletService.walletBool;
+  }
+
+  getWalletNone(): boolean{
+    return this.walletService.walletNone;
+  }
+
+  forgetWallet(): void{
+    this.walletService.forgetWallet();
+  }
+
+  onButtonGroupClick($event){
+  let clickedElement = $event.target || $event.srcElement;
+  debugger;
+  if( clickedElement.nodeName === "BUTTON" ) {
+
+    let isCertainButtonAlreadyActive = clickedElement.parentElement.querySelector(".clicked");
+    // if a Button already has Class: .active
+    if( isCertainButtonAlreadyActive ) {
+      isCertainButtonAlreadyActive.classList.remove("clicked");
+    }
+
+    clickedElement.className += " clicked";
+  }
+
+}
 
 }
