@@ -21,17 +21,18 @@
       <div class="modal-body">
         <div style="padding-top:10px"></div>
 
-        <p class="text-center py-10 mb-5"><span>You are joining the CanYa DAO as </span>
-          <span><strong>{{getName(id) | uppercase }}</strong></span></p>
+        <div *ngIf="view==0">
+          <p class="text-center py-10 mb-5"><span>You are joining the CanYa DAO as </span>
+            <span><strong>{{getName(id) | uppercase }}</strong></span></p>
 
-          <p class="text-primary py-5 my-5 h-50" style="font-size:2.25rem">{{ getStake(id) | number:0}} CAN</p>
-          <p class="fw-300 pt-5 mt-5 mb-20 h-25" style="font-size:1.25rem">Stake required</p>
+            <p class="text-primary py-5 my-5 h-50" style="font-size:2.25rem">{{ getStake(id) | number:0}} CAN</p>
+            <p class="fw-300 pt-5 mt-5 mb-20 h-25" style="font-size:1.25rem">Stake required</p>
 
-          <div *ngIf="id=='1' || id=='2' || id=='3'">
-            <p class="fw-300 my-5" style="font-size:1.25rem">Waiting period: {{ getPeriod(id)}} days</p>
-          </div>
+            <div *ngIf="id=='1' || id=='2' || id=='3'">
+              <p class="fw-300 my-5" style="font-size:1.25rem">Waiting period: {{ getPeriod(id)}} days</p>
+            </div>
 
-          <div *ngIf="view==0">
+
             <div style="padding-top:10px"></div>
             <strong class="text-center">Stake is locked from your wallet immediately, but you can unlock your stake at any time.</strong>
             <br><br>
@@ -41,20 +42,25 @@
           </div>
 
           <div *ngIf="view==1">
-            <hr>
             <div class="container bg-lgrey">
-            <div class="row bg-white">
-            <div class="col mx-30 py-20 bg-lgrey">
-                <strong class="text-center">Please sign with your Wallet</strong>
-                <br><br>
-                <p class="text-center">Waiting</p>
-                <button type="button" class="btn btn-md btn-primary" (click)="[stake(id), modal.close('Stake')]">Sign</button>
-                <br>
+              <div class="row bg-white">
+                <div class="col mx-30 py-20 bg-lgrey">
+                  <strong class="text-center">Please sign with your Wallet</strong>
+                  <br><br>
+                  <img class="logo-default my-30" src="assets/img/loader.svg"  width="auto" height="50px" alt="logo">
+                  <p class="text-center mb-30">Waiting</p>
+                  <br>
+                </div>
               </div>
             </div>
           </div>
-          </div>
 
+          <div *ngIf="view==2">
+
+            <p class="fw-300 my-5" style="font-size:1.25rem">Congratulations! You have now joined the CanYaDAO!</p>
+            <img class="logo-default my-30" src="assets/img/confirmation.png"  width="auto" height="100px" alt="logo">
+            <p>You can now earn on tasks and contribute to the CanYa Ecosystem.</p>
+          </div>
 
         </div>
 
@@ -62,16 +68,23 @@
           <div class="container text-center">
             <div class="row text-center">
               <div class="col-6 text-center">
-                <button type="button" class="btn btn-md btn-secondary" (click)="modal.close('Stake') ">Close</button>
+                <button type="button" class="btn btn-md btn-secondary" (click)="modal.close('Stake')">Close</button>
               </div>
-              <div class="col text-center">
-                <button type="button" class="btn btn-md btn-primary" (click)="enterSign()">Stake</button>
+              <div *ngIf="view==0" class="col-6 text-center">
+                <button type="button" class="btn btn-md btn-primary" (click)="enterModalMode(1)">Stake</button>
+              </div>
+              <div *ngIf="view==1" class="col-6 text-center">
+                <button type="button" class="btn btn-md btn-primary" (click)="[stake(id), enterModalMode(2)]">Sign</button>
+              </div>
+              <div *ngIf="view==2" class="col-6 text-center">
+                <button type="button" class="btn btn-md btn-primary" (click)="[modal.close('Stake'), navProfile()]">Profile</button>
               </div>
             </div>
             <div style="padding-top:10px"></div>
           </div>
         </div>
       </div>
+
 
 
 

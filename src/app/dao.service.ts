@@ -9,11 +9,12 @@ import { DATADAO, MEMBERDAO} from './dataDAO';
 })
 export class DaoService {
 
-  dataDAO = DATADAO;
-  memberDAO = MEMBERDAO;
+  public dataDAO = DATADAO;
+  public memberDAO = MEMBERDAO;
+  public inDAO: boolean = false;
 
   // DB Model
-  member: Member;
+  public member: Member;
 
   constructor() { }
 
@@ -65,6 +66,7 @@ export class DaoService {
     this.memberDAO.name = this.getName(id);
     var today = new Date();
     this.memberDAO.date = today.toDateString();
+    this.inDAO = true;
   }
 
   unStake(id) {
@@ -76,6 +78,7 @@ export class DaoService {
     this.memberDAO.tier = 0;
     this.memberDAO.name = '';
     this.memberDAO.date = '';
+    this.inDAO = false;
   }
 
 }

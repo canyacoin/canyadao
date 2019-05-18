@@ -19,7 +19,7 @@ export class ProfileComponent implements OnInit {
   id = 2;
   public typeBtn:string;
   public tierDAO:number;
-  public inDAO: boolean = false;
+
 
   constructor(private modalService: NgbModal,
     private walletService: WalletService,
@@ -45,9 +45,6 @@ export class ProfileComponent implements OnInit {
 
     ngOnInit() {
       this.tierDAO = this.daoService.getMemberTier();
-      if (this.getStaked()>=0) {
-        this.inDAO = true;
-      }
     }
 
     setID(id) {
@@ -55,7 +52,7 @@ export class ProfileComponent implements OnInit {
     }
 
     public updateProfile(dao, id){
-      this.inDAO=dao;
+      this.daoService.inDAO=dao;
       this.tierDAO = id;
     }
 
@@ -83,6 +80,9 @@ export class ProfileComponent implements OnInit {
       this.walletService.forgetWallet();
     }
 
+    getDAOStatus(): boolean {
+      return this.daoService.inDAO;
+    }
 
     getStake(id): number {
       return this.daoService.getStake(id);
@@ -125,7 +125,6 @@ export class ProfileComponent implements OnInit {
 
     onButtonGroupClick($event){
       let clickedElement = $event.target || $event.srcElement;
-      debugger;
       if( clickedElement.nodeName === "BUTTON" ) {
 
         let isCertainButtonAlreadyActive = clickedElement.parentElement.querySelector(".clicked");

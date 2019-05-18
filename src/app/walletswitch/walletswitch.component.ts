@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 import { FileUploadService } from '../file-upload.service'
 import { WalletService } from '../wallet.service'
+
 
 @Component({
   selector: 'app-wlt-connect',
@@ -35,7 +37,7 @@ import { WalletService } from '../wallet.service'
 export class ConnectWLTComponent {
   @Input() id;
 
-constructor(private walletService: WalletService){
+constructor(private router: Router, private walletService: WalletService){
 }
 setWallet(){
   this.walletService.setWallet('bnbtestwallet');
@@ -112,7 +114,7 @@ setWallet(){
 export class LedgerWLTComponent {
   @Input() id;
 
-  constructor(private walletService: WalletService){
+  constructor(private router: Router, private route: ActivatedRoute, private walletService: WalletService){
   }
   setWallet(){
     this.walletService.setWallet('bnbtestwallet');
@@ -145,14 +147,17 @@ export class LedgerWLTComponent {
   <div style="padding-top:10px"></div>
   <div class="row text-right">
     <div class="col">
-      <button class="btn btn-primary btn-w-md" style="margin-right:40px" (click)="setWallet()">UNLOCK</button>
+        <button class="btn btn-primary btn-w-md" style="margin-right:40px" (click)="setWallet()">UNLOCK</button>
     </div>
   </div>`
 })
 export class KeystoreWLTComponent {
   @Input() id;
 
-  constructor(private fileUploadService: FileUploadService, private walletService: WalletService){
+  constructor(private router: Router,
+    private route: ActivatedRoute,
+    private fileUploadService: FileUploadService,
+    private walletService: WalletService){
 
   }
 
@@ -160,6 +165,7 @@ export class KeystoreWLTComponent {
 
   setWallet(){
     this.walletService.setWallet('bnbtestwallet');
+    this.router.navigate(["../home"], {relativeTo: this.route});
   }
 
   handleFileInput(files: FileList) {
@@ -206,6 +212,7 @@ export class PhraseWLTComponent {
   }
   setWallet(){
     this.walletService.setWallet('bnbtestwallet');
+    this
   }
 
 }

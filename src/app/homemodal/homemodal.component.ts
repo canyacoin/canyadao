@@ -100,8 +100,12 @@ export class HomemodalComponent implements OnInit {
     this.daoService.stake(id);
     }
 
-  enterSign(){
-    this.view=1;
+  enterModalMode(id){
+    this.view=id;
+  }
+
+  navProfile(){
+    this.router.navigate(['/profile'])
   }
 
 
