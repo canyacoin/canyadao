@@ -1239,6 +1239,10 @@ button:focus {
   width: 180px;
 }
 
+.btn-h-lg {
+  height: 100px;
+}
+
 .btn-round {
   border-radius: 10rem;
 }

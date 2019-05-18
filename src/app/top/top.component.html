@@ -1,36 +1,58 @@
 <!-- Topbar -->
 <nav class="topbar topbar-expand-md topbar-sticky" id="section-top">
   <div class="container">
-
     <div class="topbar-left">
       <a class="topbar-brand" [routerLink]="['home']">
         <!-- <img class="logo-inverse" src="assets/img/logo.svg" width="136px" alt="logo"> -->
         <img class="logo-default" src="assets/img/CanYaDAO.svg"  width="auto" height="36px" alt="logo">
       </a>
     </div>
-    <div class="topbar-right" id="top-nav">
+    <div class="topbar-left" id="top-nav">
 
-      <ul class="topbar-nav nav mr-3">
-        <li class="nav-item mobile-only">
-                <a class="nav-link" href="https://github.com/canyaio/CanYa-Styleguide" target="_blank">
-                            <button _ngcontent-c1="" class="btn btn- btn-primary btn-outline btn-sm" id="github-btn" type="submit">CREATE WALLET</button>
-                </a>
-        </li>
+
+        <div *ngIf="getWalletBool()">
+          <ul class="topbar-center nav mr-3">
+          <li class="nav-item mr-20"><a class="nav-link" id="home-link" [routerLink]="['home']">HOME</a></li>
+          <li class="nav-item mr-20"><a class="nav-link" class="nav-link" id="profile-link" [routerLink]="['profile']">PROFILE</a></li>
+          <li class="nav-item mr-20 badge badge-pill badge-sm badge-default" style="vertical-align=middle">{{getWallet()}}</li>
+        </ul>
+
+      </div>
+
+        <div *ngIf="getWalletNone()">
           <li class="nav-item mobile-only">
-                <a class="nav-link" href="https://canya.io" target="_blank">
-                            <button class="btn btn-primary btn-sm" id="io-btn">CREATE WALLET</button>
-                </a>
-        </li>
-      </ul>
+            <a class="nav-link"  href="https://www.binance.org/en/create" target="_blank">
+              <button _ngcontent-c1="" class="btn btn-primary btn-outline btn-sm btn-space" id="btn-create" type="submit">CREATE WALLET</button>
+            </a>
+          </li>
+          <li class="nav-item mobile-only">
+            <a  class="nav-link" id="wallet-link" [routerLink]="['profile']">
+              <button class="btn btn-primary btn-sm  btn-top" id="wallet-btn">CONNECT WALLET</button>
+            </a>
+          </li>
+        </div>
 
-        <a class="top-btn"  href="https://github.com/canyaio/CanYa-Styleguide" target="_blank">
-                            <button _ngcontent-c1="" class="btn btn-primary btn-outline btn-sm " id="github-btn" type="submit">CREATE WALLET</button>
-        </a>
-        <a class="top-btn" href="https://canya.io" target="_blank">
-                            <button class="btn btn-primary btn-sm  btn-top" id="io-btn">CONNECT WALLET</button>
-        </a>
-      <button class="topbar-toggler text-gray">&#9776;</button>
+
+      <div class="topbar-center" id="top-nav">
+        <div *ngIf="getWalletNone()">
+          <a class="top-btn" style="padding-right:10px" href="https://www.binance.org/en/create" target="_blank">
+            <button _ngcontent-c1="" class="btn btn-primary btn-outline btn-sm btn-space" id="btn-create" type="submit">CREATE WALLET</button>
+          </a>
+          <a  class="top-btn" id="wallet-link" [routerLink]="['profile']">
+            <button class="btn btn-primary btn-sm  btn-top" id="wallet-btn">CONNECT WALLET</button>
+          </a>
+          <!-- <a class="top-btn text-right"> -->
+          <!-- <button class="topbar-toggler text-gray btn-top text-right">&#9776;</button>
+          </a> -->
+        </div>
+
+        </div>
+
+
+      </div>
     </div>
-  </div>
+
+
+
 </nav>
 <!-- END Topbar -->

@@ -1,3 +1,5 @@
+
+
 .min-70 {
     min-height: 70vh;
 }
@@ -95,6 +97,16 @@
 
 .specialcard i {
     font-size: 3em;
+}
+
+.bg-lgrey {
+  background: #F8F9FA;
+  border-radius: 5px;
+}
+
+.bg-white {
+  background: #FFFFFF;
+  border-radius: 5px;
 }
 
 .bg-gold {
