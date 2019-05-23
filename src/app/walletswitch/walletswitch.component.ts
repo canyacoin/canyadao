@@ -3,7 +3,8 @@ import { Router, ActivatedRoute } from "@angular/router";
 import { FileUploadService } from "../file-upload.service";
 import { WalletService } from "../wallet.service";
 import WalletConnect from "@walletconnect/browser";
-import WalletConnectQRCodeModal from "@walletconnect/qrcode-modal";
+import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
+import { QrModalComponent } from "../qr-modal/qr-modal.component";
 
 @Component({
   selector: "app-wlt-connect",
@@ -36,7 +37,10 @@ import WalletConnectQRCodeModal from "@walletconnect/qrcode-modal";
       <div class="col text-left align-self-center">
         <div class="px-30">
           <div>
-            <button class="btn btn-primary btn-w-xl" (click)="setWallet()">
+            <button
+              class="btn btn-primary btn-w-xl"
+              (click)="setWallet(qrModal)"
+            >
               Show QR Code
             </button>
           </div>
@@ -51,8 +55,13 @@ import WalletConnectQRCodeModal from "@walletconnect/qrcode-modal";
 export class ConnectWLTComponent {
   @Input() id;
 
-  constructor(private router: Router, private walletService: WalletService) {}
+  constructor(
+    private router: Router,
+    private walletService: WalletService,
+    private modalService: NgbModal
+  ) {}
   setWallet() {
+    let modalRef;
     /**
      *  Create a walletConnector
      */
@@ -67,11 +76,9 @@ export class ConnectWLTComponent {
       // create new session
       walletConnector.createSession().then(() => {
         // get uri for QR Code modal
-        const uri = walletConnector.uri;
         // display QR Code modal
-        WalletConnectQRCodeModal.open(uri, () => {
-          console.log("QR Code Modal closed");
-        });
+        modalRef = this.modalService.open(QrModalComponent);
+        modalRef.componentInstance.generateQRCode(walletConnector.uri);
       });
     }
 
@@ -84,7 +91,7 @@ export class ConnectWLTComponent {
       }
 
       // close QR Code Modal
-      WalletConnectQRCodeModal.close();
+      modalRef.close();
 
       // get provided accounts and chainId
       const { accounts, chainId } = payload.params[0];
