@@ -16,7 +16,7 @@ import { DaoService } from '../dao.service';
 export class ProfileComponent implements OnInit {
 
   closeResult: string;
-  id = 2;
+  id;
   public typeBtn:string;
   public tierDAO:number;
 
