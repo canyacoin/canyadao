@@ -1,27 +1,28 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpModule } from '@angular/http';
-import { HttpClientModule }    from '@angular/common/http';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { DatePipe } from '@angular/common';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { BrowserModule } from "@angular/platform-browser";
+import { NgModule } from "@angular/core";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { HttpModule } from "@angular/http";
+import { HttpClientModule } from "@angular/common/http";
+import { ReactiveFormsModule, FormsModule } from "@angular/forms";
+import { DatePipe } from "@angular/common";
+import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 
-import * as $ from 'jquery';
+import * as $ from "jquery";
 
-import { AppRoutingModule } from './app-routing.module';
-import { AuthGuard } from './auth.guard';
+import { AppRoutingModule } from "./app-routing.module";
+import { AuthGuard } from "./auth.guard";
 
-import { AppComponent } from './app.component';
-import { TopComponent } from './top/top.component';
-import { FooterComponent } from './footer/footer.component';
-import { HomeComponent } from './home/home.component';
-import { PageNotFoundComponent } from './pagenotfound/pagenotfound.component';
-import { ProfileComponent } from './profile/profile.component';
-import { ModalComponent } from './modal/modal.component';
-import { HomemodalComponent } from './homemodal/homemodal.component';
-import { WithdrawmodalComponent } from './withdrawmodal/withdrawmodal.component';
-import { WalletSwitchComponent } from './walletswitch/walletswitch.component';
+import { AppComponent } from "./app.component";
+import { TopComponent } from "./top/top.component";
+import { FooterComponent } from "./footer/footer.component";
+import { HomeComponent } from "./home/home.component";
+import { PageNotFoundComponent } from "./pagenotfound/pagenotfound.component";
+import { ProfileComponent } from "./profile/profile.component";
+import { ModalComponent } from "./modal/modal.component";
+import { HomemodalComponent } from "./homemodal/homemodal.component";
+import { WithdrawmodalComponent } from "./withdrawmodal/withdrawmodal.component";
+import { WalletSwitchComponent } from "./walletswitch/walletswitch.component";
+import { QrModalComponent } from "./qr-modal/qr-modal.component";
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { WalletSwitchComponent } from './walletswitch/walletswitch.component';
     HomemodalComponent,
     WithdrawmodalComponent,
     WalletSwitchComponent,
+    QrModalComponent
   ],
   imports: [
     BrowserModule,
@@ -44,9 +46,10 @@ import { WalletSwitchComponent } from './walletswitch/walletswitch.component';
     ReactiveFormsModule,
     FormsModule,
     AppRoutingModule,
-    NgbModule,
+    NgbModule
   ],
   providers: [AuthGuard, DatePipe],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [QrModalComponent]
 })
-export class AppModule { }
+export class AppModule {}
