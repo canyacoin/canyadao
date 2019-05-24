@@ -21,12 +21,12 @@
                 </div>
                 <div class="row text-left">
                   <div class="col">
-                    <p><span class="badge badge-pill badge-md badge-default">{{getMemberWallet()}}</span>
+                    <p><span class="badge badge-pill badge-md badge-default">{{getAddress()}}</span>
                     </div>
                   </div>
                 </div>
                 <div class="col mr-5 align-self-center">
-                  <button class="btn btn-outline btn-danger btn-md" id="wallet-btn" (click)="forgetWallet()">FORGET WALLET</button>
+                  <button class="btn btn-outline btn-danger btn-md" id="wallet-btn" (click)="forgetAddress()">FORGET WALLET</button>
                 </div>
               </div>
               <hr class="my-5">
@@ -102,7 +102,6 @@
                       <a (click)="setID('2')" class="hvr-underline-reveal hvr-icon-fade hvr-icon-push">
                         <i class="fa fa-star hvr-icon blue"></i>
                         WALLET CONNECT
-                        <p class="text-muted mb-1 badge badge-pill badge-sm badge-default">coming soon</p>
                       </a>
                     </div>
                   </div>

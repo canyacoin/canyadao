@@ -56,8 +56,8 @@ export class ProfileComponent implements OnInit {
       this.tierDAO = id;
     }
 
-    getWallet(): string{
-      return this.walletService.getWallet();
+    getAddress(): string{
+      return this.walletService.getAddress();
     }
 
     getWalletBal(): number{
@@ -76,8 +76,8 @@ export class ProfileComponent implements OnInit {
       return this.walletService.walletNone;
     }
 
-    forgetWallet(): void{
-      this.walletService.forgetWallet();
+    forgetAddress(): void{
+      this.walletService.forgetAddress();
     }
 
     getDAOStatus(): boolean {
