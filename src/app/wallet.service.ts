@@ -150,7 +150,6 @@ async queryBalance(){
       console.log('Wait 2 minutes');
     }
 
-
     // return bal;
   })
     .catch((error) => {
