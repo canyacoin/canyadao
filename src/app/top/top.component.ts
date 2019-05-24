@@ -28,11 +28,11 @@ export class TopComponent implements OnInit {
   }
 
   AfterViewInit(){
-    this.getWallet();
+    this.getAddress();
   }
 
-  getWallet(): string{
-    return this.walletService.getWallet();
+  getAddress(): string{
+    return this.walletService.getAddressStub();
   }
 
   getWalletBool(): boolean{

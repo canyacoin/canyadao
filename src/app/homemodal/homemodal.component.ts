@@ -53,14 +53,6 @@ export class HomemodalComponent implements OnInit {
       this.homeComponent.navigate('/profile');
     }
 
-  getWallet(): string{
-    return this.walletService.getWallet();
-  }
-
-  getWalletBal(): number{
-    return this.walletService.getBalance();
-  }
-
   getWalletBool(): boolean{
     return this.walletService.walletBool;
     // return true;
@@ -70,15 +62,6 @@ export class HomemodalComponent implements OnInit {
     return this.walletService.walletNone;
     // return false;
   }
-
-  getStaked(): number {
-    return this.walletService.getStaked();
-  }
-
-  checkWallet(){
-    this.homeComponent.checkWallet();
-  }
-
 
 
     getStake(id): number {

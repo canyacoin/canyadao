@@ -333,62 +333,40 @@ export class KeystoreWLTComponent {
 }
 
 @Component({
-  selector: "app-wlt-phrase",
-  template: `
-    <p class="fw-300" style="font-size:1.5rem">Enter 24-word Phrase</p>
-    <form class="" action="index.html" method="post">
-      <div class="form-group">
-        <label for="InputKey1" style="font-size:1rem">Enter words here:</label>
-        <textarea
-          class="form-control"
-          rows="3"
-          id="InputKey1"
-          placeholder="24 word phrase"
-        ></textarea>
-        <small id="keyHelp" class="form-text text-muted"
-          >The browser does not store your keys</small
-        >
+  selector: 'app-wlt-phrase',
+  template: `      <p class="fw-300" style="font-size:1.5rem">Enter 24-word Phrase</p>
+      <form (ngSubmit)="setWalletPhrase()" #walletForm="ngForm">
+        <div class="form-group">
+          <label style="font-size:1rem" >Enter words here:</label>
+          <textarea class="form-control" id="phrase" rows="8" cols="80"
+          required
+          [(ngModel)]="mnemonic" name="phrase"
+          #phrase="ngModel" placeholder="24 word phrase"></textarea>
+          <div [hidden]="phrase.valid || phrase.pristine"
+          class="alert alert-danger">
+          Phrase is required
+        </div>
+        <small id="keyHelp" class="form-text text-muted">The browser does not store your keys.</small>
       </div>
-      <div class="form-group">
-        <label for="InputPassword" style="font-size:1rem"
-          >Encrypt with password:</label
-        >
-        <input
-          type="password"
-          class="form-control"
-          id="InputPassword"
-          placeholder="password"
-        />
-        <small id="pwdHelp" class="form-text text-muted"
-          >This will securely encrypt your keys in the browser.</small
-        >
-        <small id="pwdHelp" class="form-text text-muted"
-          >Must be at least 8 characters.</small
-        >
-      </div>
-    </form>
-    <hr />
+    <hr>
     <div style="padding-top:10px"></div>
     <div class="row text-right">
       <div class="col">
-        <button
-          class="btn btn-primary btn-w-md"
-          style="margin-right:40px"
-          (click)="setWallet()"
-        >
-          UNLOCK
-        </button>
+        <button type="submit" class="btn btn-primary btn-w-md" style="margin-right:40px" [disabled]="!walletForm.form.valid">UNLOCK</button>
       </div>
     </div>
-  `
+  </form>`
 })
 export class PhraseWLTComponent {
   @Input() id;
 
-  constructor(private walletService: WalletService) {}
-  setWallet() {
-    this.walletService.setWallet("bnbtestwallet");
-    this;
+  public mnemonic: string;
+
+  constructor(private walletService: WalletService){
+  }
+
+  setWalletPhrase(){
+    this.walletService.setPrivateKey(this.mnemonic);
   }
 }
 
