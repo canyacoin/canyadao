@@ -53,8 +53,8 @@ export class HomemodalComponent implements OnInit {
       this.homeComponent.navigate('/profile');
     }
 
-  getWallet(): string{
-    return this.walletService.getWallet();
+  getAddress(): string{
+    return this.walletService.getAddress();
   }
 
   getWalletBal(): number{
