@@ -63,6 +63,10 @@ export class HomemodalComponent implements OnInit {
     // return false;
   }
 
+  getStaked(): number {
+    return this.walletService.getStaked();
+  }
+
 
     getStake(id): number {
       return this.daoService.getStake(id);

@@ -135,7 +135,7 @@ public checkWallet() {
 
 }
 
-getDaoFund(): number{
+getDaoFund(){
   const result = (this.getJSON(this.ethCAN.cmcApi));
   this.canPrice = result[0].price_usd;
   this.canAmount =  this.getTokenBalanceAtAddress(this.ethCAN.daoAddress, this.ethCAN.canAddress, 6);

@@ -16,9 +16,7 @@
                 <div class="row text-left">
                   <div class="col">
                     <p>
-                      <span class="badge badge-pill badge-md badge-default">{{
-                        getMemberWallet()
-                      }}</span>
+                      <span class="badge badge-pill badge-md badge-default">{{getMemberWallet()}}</span>
                     </p>
                   </div>
                 </div>
@@ -27,10 +25,7 @@
                 <button
                   class="btn btn-outline btn-danger btn-md"
                   id="wallet-btn"
-                  (click)="forgetWallet()"
-                >
-                  FORGET WALLET
-                </button>
+                  (click)="forgetWallet()">FORGET WALLET</button>
               </div>
             </div>
             <hr class="my-5" />
@@ -46,10 +41,7 @@
                 </p>
               </div>
               <div class="col-md-6 text-right">
-                <app-withdrawmodal
-                  [tierDAO]="getMemberTier()"
-                  [typeBtn]="'u'"
-                ></app-withdrawmodal>
+                <app-withdrawmodal [tierDAO]="getMemberTier()" [typeBtn]="'u'"></app-withdrawmodal>
               </div>
             </div>
             <div class="row text-left">
@@ -62,10 +54,7 @@
                 </p>
               </div>
               <div class="col-md-6 text-right">
-                <app-withdrawmodal
-                  [tierDAO]="getMemberTier()"
-                  [typeBtn]="'d'"
-                ></app-withdrawmodal>
+                <app-withdrawmodal [tierDAO]="getMemberTier()" [typeBtn]="'d'"></app-withdrawmodal>
               </div>
             </div>
 
@@ -81,10 +70,7 @@
                 </div>
 
                 <div class="col-md-6 text-right">
-                  <app-withdrawmodal
-                    [tierDAO]="getMemberTier()"
-                    [typeBtn]="'w'"
-                  ></app-withdrawmodal>
+                  <app-withdrawmodal [tierDAO]="getMemberTier()" [typeBtn]="'w'"></app-withdrawmodal>
                 </div>
               </div>
             </div>
@@ -94,9 +80,7 @@
           <div *ngIf="getWalletNone()">
             <div class="row" style="margin-top:20px">
               <div class="col-md-12 text-center">
-                <strong class="fw-300" style="font-size:1.25rem"
-                  >CONNECT WALLET</strong
-                >
+                <strong class="fw-300" style="font-size:1.25rem">CONNECT WALLET</strong>
                 <hr style="margin:5px" />
                 <p class="text-center" style="color:#ff6666">
                   Please check you are visiting https://canyadao.com
@@ -105,7 +89,7 @@
               </div>
               <h3 style="margin-left:20px">Select Wallet</h3>
             </div>
-            
+
             <div class="row text-left">
                 <div class="col sidebar">
                   <div style="margin-top:20px"></div>
@@ -130,17 +114,14 @@
                     </div>
                   </div>
                   <div style="margin-top:20px"></div>
-                
-                
-                
+
+
+
                 <div style="margin-top:20px"></div>
 
                 <div class="row">
                   <div>
-                    <a
-                      (click)="setID('2'); onButtonGroupClick($event)"
-                      class="hvr-underline-reveal"
-                    >
+                    <a (click)="setID('2'); onButtonGroupClick($event)" class="hvr-underline-reveal">
                       KEYSTORE
                     </a>
                   </div>
@@ -148,10 +129,7 @@
                 <div style="margin-top:20px"></div>
                 <div class="row">
                   <div>
-                    <a
-                      (click)="setID('3'); onButtonGroupClick($event)"
-                      class="hvr-underline-reveal"
-                    >
+                    <a (click)="setID('3'); onButtonGroupClick($event)" class="hvr-underline-reveal">
                       WORD-PHRASE
                     </a>
                   </div>
@@ -159,18 +137,12 @@
                 <div style="margin-top:20px"></div>
               </div>
 
-              <div
-                class="col"
-                style="margin-left=40px padding-left=20px margin-top:20px"
-              >
+              <div class="col" style="margin-left=40px padding-left=20px margin-top:20px">
                 <div [ngSwitch]="id">
                   <div style="margin-top:20px"></div>
                   <app-wlt-connect *ngSwitchDefault [id]="id"></app-wlt-connect>
                   <app-wlt-ledger *ngSwitchCase="1" [id]="id"></app-wlt-ledger>
-                  <app-wlt-keystore
-                    *ngSwitchCase="2"
-                    [id]="id"
-                  ></app-wlt-keystore>
+                  <app-wlt-keystore  *ngSwitchCase="2" [id]="id"></app-wlt-keystore>
                   <app-wlt-phrase *ngSwitchCase="3" [id]="id"></app-wlt-phrase>
                 </div>
               </div>
