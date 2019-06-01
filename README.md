@@ -1,4 +1,8 @@
 # CanYaDAO
+This repo is mirrored from the Gitlab master:
+
+https://gitlab.com/canyacoin/canyadao/web-ui
+---
 
 **Requirements**
 
