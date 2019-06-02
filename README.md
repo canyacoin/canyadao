@@ -1,11 +1,13 @@
+****
+
+> **Mirror**
+> This repo mirrors from Gitlab to Github. Please commit to the Gitlab repo:
+> https://gitlab.com/canyacoin/canyadao/web-ui
+
+****
+
 # CanYaDAO
 
-**Mirror**
-
-This repo is mirrored from the Gitlab master:
-
-https://gitlab.com/canyacoin/canyadao/web-ui
----
 
 **Requirements**
 
