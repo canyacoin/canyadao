@@ -24,7 +24,7 @@
     "@ng-bootstrap/ng-bootstrap": "^4.1.2",
     "@types/jquery": "^3.3.29",
     "@walletconnect/browser": "^1.0.0-beta.22",
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "core-js": "^2.5.4",
     "fs": "0.0.1-security",
     "ng-sidebar": "^8.0.0",
